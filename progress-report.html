@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高木工務店 施策進捗レポート</title>
+<style>
+  :root {
+    --primary: #1a2744;
+    --accent: #e8963e;
+    --accent-light: #f5c882;
+    --green: #2ea66a;
+    --green-light: #d4f0e0;
+    --red: #d94452;
+    --red-light: #fde8ea;
+    --blue: #3b7dd8;
+    --blue-light: #dfeafb;
+    --gray-50: #f8f9fb;
+    --gray-100: #eef0f4;
+    --gray-200: #dce0e8;
+    --gray-400: #9aa2b1;
+    --gray-600: #5c6478;
+    --gray-800: #2d3344;
+    --radius: 12px;
+    --radius-lg: 20px;
+    --shadow: 0 2px 12px rgba(26,39,68,.07);
+    --shadow-lg: 0 8px 32px rgba(26,39,68,.10);
+  }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+    background: var(--gray-50);
+    color: var(--gray-800);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(135deg, var(--primary) 0%, #2c3e6b 100%);
+    color: #fff;
+    padding: 60px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(46,166,106,.18) 0%, transparent 60%);
+  }
+  .hero > * { position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(46,166,106,.25);
+    border: 1px solid rgba(46,166,106,.4);
+    border-radius: 100px;
+    padding: 6px 20px;
+    font-size: .8rem;
+    letter-spacing: .08em;
+    margin-bottom: 16px;
+    color: #a0f0c0;
+  }
+  .hero h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; margin-bottom: 8px; }
+  .hero p { font-size: 1rem; opacity: .8; max-width: 540px; margin: 0 auto; }
+  .hero-date { font-size: .85rem; opacity: .6; margin-top: 8px; }
+
+  /* ===== CONTAINER ===== */
+  .container { max-width: 100%; margin: 0 auto; padding: 0 32px; }
+
+  /* ===== HEADER MOCKUP ===== */
+  .header-mockup {
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin: 16px 0 20px;
+    box-shadow: var(--shadow-lg);
+  }
+  .header-mockup-bar {
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    gap: 12px;
+    flex-wrap: nowrap;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .hm-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .hm-logo-icon {
+    width: 36px; height: 36px;
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .55rem;
+    font-weight: 900;
+    color: var(--primary);
+    line-height: 1;
+  }
+  .hm-logo-text {
+    font-size: .95rem;
+    font-weight: 900;
+    color: var(--primary);
+    white-space: nowrap;
+  }
+  .hm-logo-sub { font-size: .55rem; color: var(--gray-400); display: block; }
+  .hm-phone {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 4px 12px;
+    background: var(--gray-50);
+    position: relative;
+  }
+  .hm-phone-num { font-size: .85rem; font-weight: 800; color: var(--primary); }
+  .hm-phone-time { font-size: .6rem; color: var(--gray-400); }
+  .hm-phone .hm-new-badge {
+    position: absolute;
+    top: -8px; right: -8px;
+    background: var(--red);
+    color: #fff;
+    font-size: .5rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 100px;
+  }
+  .hm-nav {
+    display: flex;
+    gap: 16px;
+    flex: 1;
+    justify-content: center;
+  }
+  .hm-nav span {
+    font-size: .75rem;
+    color: var(--gray-600);
+    white-space: nowrap;
+    font-weight: 600;
+  }
+  .hm-ctas {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .hm-cta-green {
+    background: var(--green);
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 800;
+    padding: 8px 16px;
+    border-radius: 6px;
+    position: relative;
+    white-space: nowrap;
+  }
+  .hm-cta-green .hm-new-badge {
+    position: absolute;
+    top: -8px; right: -8px;
+    background: var(--red);
+    color: #fff;
+    font-size: .5rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 100px;
+  }
+  .hm-cta-orange {
+    background: var(--accent);
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 800;
+    padding: 8px 16px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+  .hm-annotations {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: #f0faf4;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .hm-annotation {
+    font-size: .7rem;
+    color: var(--green);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .hm-annotation .arrow { font-size: .9rem; }
+
+  /* ===== GBP MOCKUP ===== */
+  .gbp-mockup-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .2s, box-shadow .2s;
+    border-radius: var(--radius);
+  }
+  .gbp-mockup-link:hover {
+    transform: translateY(-2px);
+  }
+  .gbp-mockup-link:hover .gbp-mockup {
+    border-color: #1a73e8;
+    box-shadow: 0 8px 32px rgba(26,115,232,.18);
+  }
+  .gbp-mockup {
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin: 16px 0 24px;
+    box-shadow: var(--shadow-lg);
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .gbp-mockup-header {
+    background: #f1f3f4;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .gbp-google-logo {
+    width: 28px; height: 28px;
+    background: #4285f4;
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900;
+    font-size: .9rem;
+  }
+  .gbp-card {
+    background: #fff;
+    padding: 0;
+  }
+  .gbp-card-top {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+  }
+  .gbp-info { flex: 1; }
+  .gbp-name {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #1a0dab;
+    margin-bottom: 4px;
+  }
+  .gbp-rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+  .gbp-stars { color: #f4b400; font-size: .9rem; letter-spacing: -1px; }
+  .gbp-review-count { font-size: .75rem; color: var(--gray-400); }
+  .gbp-meta { font-size: .82rem; color: var(--gray-600); margin-bottom: 10px; }
+  .gbp-details { display: flex; flex-direction: column; gap: 5px; }
+  .gbp-detail-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .8rem;
+    color: var(--gray-600);
+  }
+  .gbp-detail-icon { font-size: .9rem; width: 20px; text-align: center; flex-shrink: 0; }
+  .gbp-new-tag {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-size: .55rem;
+    font-weight: 800;
+    padding: 1px 6px;
+    border-radius: 100px;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+  .gbp-photos {
+    flex-shrink: 0;
+    text-align: center;
+  }
+  .gbp-photo-grid {
+    display: flex;
+    gap: 4px;
+  }
+  .gbp-photo-main {
+    width: 90px; height: 90px;
+    background: var(--gray-100);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    font-size: 1.4rem;
+    color: var(--gray-400);
+  }
+  .gbp-photo-sub {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .gbp-photo-sm {
+    width: 42px; height: 28px;
+    background: var(--gray-100);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .7rem;
+    color: var(--gray-400);
+  }
+  .gbp-photo-more {
+    background: var(--gray-200);
+    font-weight: 800;
+    font-size: .8rem;
+  }
+  .gbp-card-bottom {
+    padding: 0 20px 16px;
+  }
+  .gbp-service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .gbp-service-tag {
+    font-size: .72rem;
+    background: var(--green-light);
+    color: #1a7a4a;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-weight: 600;
+  }
+  .gbp-service-tag .gbp-new-tag { margin-left: 0; margin-right: 4px; }
+  .gbp-post-section {
+    border-top: 1px solid var(--gray-100);
+    padding: 14px 20px;
+    background: #fafbfc;
+  }
+  .gbp-post-label {
+    font-size: .78rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 6px;
+  }
+  .gbp-post-content p {
+    font-size: .8rem;
+    color: var(--gray-600);
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    .gbp-card-top { flex-direction: column; }
+    .gbp-photos { align-self: flex-start; }
+    .gbp-photo-grid { flex-direction: row; }
+    .gbp-photo-sub { flex-direction: row; }
+  }
+
+  /* ===== SECTION ===== */
+  section { padding: 48px 0; }
+  .section-label {
+    display: inline-block;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(232,150,62,.10);
+    border-radius: 6px;
+    padding: 4px 12px;
+    margin-bottom: 10px;
+  }
+  .section-label.green {
+    color: var(--green);
+    background: rgba(46,166,106,.10);
+  }
+  .section-title {
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 8px;
+  }
+  .section-desc {
+    color: var(--gray-600);
+    font-size: .95rem;
+    margin-bottom: 32px;
+  }
+
+  /* ===== OVERALL PROGRESS ===== */
+  .progress-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .progress-card {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 24px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--gray-100);
+    position: relative;
+    overflow: hidden;
+  }
+  .progress-card::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+  .progress-card.done::before { background: var(--green); }
+  .progress-card.partial::before { background: var(--accent); }
+  .progress-card.todo::before { background: var(--gray-200); }
+  .progress-icon { font-size: 2rem; margin-bottom: 8px; }
+  .progress-label { font-size: .85rem; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+  .progress-status {
+    display: inline-block;
+    font-size: .72rem;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 100px;
+  }
+  .progress-status.done { background: var(--green-light); color: var(--green); }
+  .progress-status.partial { background: rgba(232,150,62,.12); color: var(--accent); }
+  .progress-status.todo { background: var(--gray-100); color: var(--gray-400); }
+
+  /* ===== PROGRESS BAR ===== */
+  .overall-bar-wrap {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    padding: 28px 32px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--gray-100);
+    margin-bottom: 40px;
+  }
+  .overall-bar-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+  }
+  .overall-bar-label h3 {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--primary);
+  }
+  .overall-bar-label span {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--green);
+  }
+  .overall-bar {
+    height: 20px;
+    background: var(--gray-100);
+    border-radius: 100px;
+    overflow: hidden;
+    position: relative;
+  }
+  .overall-bar-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, var(--green), #4bc282);
+    transition: width .6s ease;
+  }
+  .phase-bars {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .phase-bar-item {
+    flex: 1;
+    text-align: center;
+  }
+  .phase-mini-bar {
+    height: 6px;
+    background: var(--gray-100);
+    border-radius: 100px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+  .phase-mini-fill {
+    height: 100%;
+    border-radius: 100px;
+  }
+  .phase-bar-item:nth-child(1) .phase-mini-fill { background: var(--red); }
+  .phase-bar-item:nth-child(2) .phase-mini-fill { background: var(--accent); }
+  .phase-bar-item:nth-child(3) .phase-mini-fill { background: var(--blue); }
+  .phase-bar-item:nth-child(4) .phase-mini-fill { background: var(--green); }
+  .phase-bar-item span {
+    font-size: .7rem;
+    color: var(--gray-400);
+    font-weight: 600;
+  }
+
+  /* ===== COMPLETED DETAIL ===== */
+  .done-section {
+    background: linear-gradient(135deg, #f0faf4 0%, #e8f8ee 100%);
+    border: 2px solid var(--green);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .done-section::before {
+    content: "COMPLETED";
+    position: absolute;
+    top: -12px;
+    left: 24px;
+    background: var(--green);
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 800;
+    padding: 4px 16px;
+    border-radius: 100px;
+    letter-spacing: .1em;
+  }
+  .done-section h3 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .done-section h3 .check { color: var(--green); font-size: 1.3rem; }
+
+  .done-items {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .done-item {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    box-shadow: 0 1px 6px rgba(0,0,0,.04);
+    border-left: 4px solid var(--green);
+  }
+  .done-item h4 {
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .done-item h4 .icon { font-size: 1.1rem; }
+  .done-item-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .detail-tag {
+    font-size: .73rem;
+    padding: 4px 12px;
+    border-radius: 100px;
+    background: var(--green-light);
+    color: #1a7a4a;
+    font-weight: 600;
+  }
+  .done-item p {
+    font-size: .83rem;
+    color: var(--gray-600);
+    margin-bottom: 4px;
+  }
+
+  /* ===== ACTION NEEDED ===== */
+  .action-section {
+    background: linear-gradient(135deg, #fff8ee 0%, #fff3e0 100%);
+    border: 2px solid var(--accent);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .action-section::before {
+    content: "ACTION NEEDED";
+    position: absolute;
+    top: -12px;
+    left: 24px;
+    background: var(--accent);
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 800;
+    padding: 4px 16px;
+    border-radius: 100px;
+    letter-spacing: .1em;
+  }
+  .action-section h3 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .action-item {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: 0 1px 6px rgba(0,0,0,.04);
+    border-left: 4px solid var(--accent);
+  }
+  .action-item h4 {
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+  }
+  .action-item p {
+    font-size: .83rem;
+    color: var(--gray-600);
+    margin-bottom: 10px;
+  }
+  .photo-progress {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 16px 0;
+    padding: 16px;
+    background: rgba(232,150,62,.06);
+    border-radius: 10px;
+  }
+  .photo-bar {
+    flex: 1;
+    height: 14px;
+    background: var(--gray-100);
+    border-radius: 100px;
+    overflow: hidden;
+    position: relative;
+  }
+  .photo-bar-fill {
+    height: 100%;
+    width: 30%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    border-radius: 100px;
+  }
+  .photo-count {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .photo-count small { font-size: .8rem; font-weight: 600; color: var(--gray-400); }
+  .photo-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .photo-type {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: .82rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+  }
+  .photo-type.have { background: var(--green-light); color: #1a7a4a; }
+  .photo-type.need { background: var(--red-light); color: var(--red); }
+  .photo-type .emoji { font-size: 1.1rem; }
+
+  /* ===== PHASE CARDS ===== */
+  .phase { margin-bottom: 36px; }
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .phase-number {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 1.1rem; color: #fff;
+    flex-shrink: 0;
+  }
+  .phase-1 .phase-number { background: var(--red); }
+  .phase-2 .phase-number { background: var(--accent); }
+  .phase-3 .phase-number { background: var(--blue); }
+  .phase-4 .phase-number { background: var(--green); }
+  .phase-title { font-size: 1.2rem; font-weight: 800; color: var(--primary); }
+  .phase-period {
+    font-size: .75rem;
+    border-radius: 100px;
+    padding: 4px 14px;
+    font-weight: 600;
+  }
+  .phase-period.done {
+    background: var(--green-light);
+    color: var(--green);
+  }
+  .phase-period.pending {
+    background: var(--gray-100);
+    color: var(--gray-600);
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--gray-100);
+    position: relative;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+  .card-icon {
+    width: 42px; height: 42px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+  .phase-2 .card-icon { background: rgba(232,150,62,.12); }
+  .phase-3 .card-icon { background: var(--blue-light); }
+  .phase-4 .card-icon { background: var(--green-light); }
+  .card h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+  }
+  .card p {
+    font-size: .85rem;
+    color: var(--gray-600);
+    margin-bottom: 10px;
+  }
+  .card ul { list-style: none; padding: 0; }
+  .card ul li {
+    font-size: .82rem;
+    color: var(--gray-600);
+    padding: 4px 0 4px 18px;
+    position: relative;
+  }
+  .card ul li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 11px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+  .phase-2 .card ul li::before { background: var(--accent); opacity: .35; }
+  .phase-3 .card ul li::before { background: var(--blue); opacity: .35; }
+  .phase-4 .card ul li::before { background: var(--green); opacity: .35; }
+
+  .tag-free {
+    display: inline-block;
+    font-size: .65rem;
+    font-weight: 700;
+    background: var(--green-light);
+    color: var(--green);
+    border-radius: 4px;
+    padding: 2px 8px;
+    vertical-align: middle;
+    margin-left: 6px;
+  }
+
+  /* ===== KEYWORD TABLE ===== */
+  .kw-table-wrap {
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--gray-100);
+    overflow-x: auto;
+    margin-top: 16px;
+    margin-bottom: 12px;
+  }
+  .kw-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .85rem;
+  }
+  .kw-table th {
+    background: var(--primary);
+    color: #fff;
+    text-align: left;
+    padding: 12px 16px;
+    font-weight: 700;
+    font-size: .78rem;
+    letter-spacing: .04em;
+  }
+  .kw-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--gray-100);
+    color: var(--gray-600);
+  }
+  .kw-table tr:last-child td { border-bottom: none; }
+  .kw-table tr:hover td { background: var(--gray-50); }
+  .kw-priority {
+    display: inline-block;
+    font-size: .7rem; font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 100px;
+  }
+  .kw-priority.high { background: var(--red-light); color: var(--red); }
+  .kw-priority.mid { background: rgba(232,150,62,.12); color: var(--accent); }
+  .kw-priority.low { background: var(--blue-light); color: var(--blue); }
+
+  /* ===== PRINCIPLE ===== */
+  .principle {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    border-radius: var(--radius-lg);
+    padding: 28px 32px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  .principle.done-principle {
+    background: linear-gradient(135deg, #f0faf4 0%, #e8f8ee 100%);
+    border: 2px solid var(--green);
+  }
+  .principle-icon { font-size: 2.8rem; flex-shrink: 0; }
+  .principle-text h3 {
+    font-size: 1.15rem;
+    color: var(--primary);
+    margin-bottom: 4px;
+  }
+  .principle-text p {
+    font-size: .9rem;
+    color: var(--gray-600);
+  }
+
+  /* ===== SUMMARY ROUTE ===== */
+  .route {
+    background: linear-gradient(135deg, var(--primary) 0%, #2c3e6b 100%);
+    color: #fff;
+    border-radius: var(--radius-lg);
+    padding: 36px 32px;
+    margin-top: 8px;
+  }
+  .route h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+  }
+  .route-steps {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .route-step {
+    flex: 1 1 180px;
+    text-align: center;
+    padding: 0 10px;
+    min-width: 160px;
+    position: relative;
+  }
+  .route-circle {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 10px;
+    font-weight: 900;
+  }
+  .route-step:nth-child(1) .route-circle { background: rgba(46,166,106,.4); border: 2px solid var(--green); }
+  .route-step:nth-child(3) .route-circle { background: rgba(232,150,62,.25); border: 2px solid var(--accent); }
+  .route-step:nth-child(5) .route-circle { background: rgba(59,125,216,.25); border: 2px solid var(--blue); }
+  .route-step:nth-child(7) .route-circle { background: rgba(46,166,106,.25); border: 2px solid var(--green); }
+  .route-step h4 {
+    font-size: .9rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .route-step p {
+    font-size: .78rem;
+    opacity: .7;
+  }
+  .route-step .done-badge {
+    position: absolute;
+    top: -6px;
+    right: 20%;
+    background: var(--green);
+    color: #fff;
+    font-size: .6rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 100px;
+  }
+  .route-arrow {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    font-size: 1.4rem;
+    opacity: .4;
+    flex-shrink: 0;
+  }
+
+  /* ===== NEXT STEPS ===== */
+  .next-steps {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--gray-100);
+    margin-top: 32px;
+  }
+  .next-steps h3 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 20px;
+  }
+  .next-list { list-style: none; padding: 0; }
+  .next-list li {
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    font-size: .88rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .next-list li.urgent {
+    background: var(--red-light);
+    color: var(--red);
+    font-weight: 600;
+  }
+  .next-list li.normal {
+    background: var(--gray-50);
+    color: var(--gray-600);
+    border: 1px solid var(--gray-100);
+  }
+  .next-list .num {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .72rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    color: #fff;
+  }
+  .next-list .urgent .num { background: var(--red); }
+  .next-list .normal .num { background: var(--gray-400); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: .78rem;
+    color: var(--gray-400);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 600px) {
+    .container { padding: 0 12px; }
+    .hero { padding: 40px 16px 32px; }
+    section { padding: 32px 0; }
+    .principle { padding: 20px; gap: 14px; }
+    .route-arrow { display: none; }
+    .route-steps { gap: 20px; }
+    .cards { grid-template-columns: 1fr; }
+    .done-section, .action-section { padding: 24px 16px; }
+    .photo-list { grid-template-columns: 1fr; }
+    .header-mockup-bar { flex-wrap: wrap; }
+    .hm-nav { display: none; }
+    .hm-annotations { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-badge">PROGRESS REPORT</div>
+  <h1>施策進捗レポート</h1>
+  <p>高木工務店 &#8212; 改善プランの実施状況</p>
+</header>
+
+<!-- ===== 実施した施策 ===== -->
+<section>
+  <div class="container">
+    <span class="section-label green">Action Report</span>
+    <h2 class="section-title">実施した施策</h2>
+    <p class="section-desc">今月実施した施策の報告です。まずホームページのお問い合わせ導線を整備し、お客様が問い合わせしやすい環境をつくりました。</p>
+
+    <!-- Phase Progress -->
+    <div class="progress-overview">
+      <div class="progress-card done">
+        <div class="progress-icon">&#9989;</div>
+        <div class="progress-label">STEP 1: お問い合わせ導線の整備</div>
+        <div class="progress-status done">完了</div>
+      </div>
+      <div class="progress-card partial">
+        <div class="progress-icon">&#9997;&#65039;</div>
+        <div class="progress-label">STEP 2: コンテンツ制作</div>
+        <div class="progress-status partial">一部着手</div>
+      </div>
+      <div class="progress-card todo">
+        <div class="progress-icon">&#128203;</div>
+        <div class="progress-label">STEP 3: 採用施策</div>
+        <div class="progress-status todo">準備中</div>
+      </div>
+      <div class="progress-card todo">
+        <div class="progress-icon">&#128203;</div>
+        <div class="progress-label">STEP 4: 口コミ・レビュー強化</div>
+        <div class="progress-status todo">準備中</div>
+      </div>
+    </div>
+
+    <!-- Overall Bar -->
+    <div class="overall-bar-wrap">
+      <div class="overall-bar-label">
+        <h3>全体の進捗</h3>
+        <span>40%</span>
+      </div>
+      <div class="overall-bar">
+        <div class="overall-bar-fill" style="width: 40%;"></div>
+      </div>
+      <div class="phase-bars">
+        <div class="phase-bar-item">
+          <div class="phase-mini-bar"><div class="phase-mini-fill" style="width:100%"></div></div>
+          <span>STEP 1: 100%</span>
+        </div>
+        <div class="phase-bar-item">
+          <div class="phase-mini-bar"><div class="phase-mini-fill" style="width:50%"></div></div>
+          <span>STEP 2: 50%</span>
+        </div>
+        <div class="phase-bar-item">
+          <div class="phase-mini-bar"><div class="phase-mini-fill" style="width:0%"></div></div>
+          <span>STEP 3: 0%</span>
+        </div>
+        <div class="phase-bar-item">
+          <div class="phase-mini-bar"><div class="phase-mini-fill" style="width:0%"></div></div>
+          <span>STEP 4: 0%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Strategy Principle -->
+    <div class="principle done-principle">
+      <div class="principle-icon">&#9989;</div>
+      <div class="principle-text">
+        <h3>STEP 1 完了：お問い合わせしやすい環境づくり</h3>
+        <p>電話番号の常時表示・見積もりボタンの設置・Googleビジネスプロフィールの整備が完了しました。<br>次のSTEP 2ではコンテンツを充実させ、アクセスと問い合わせ数を増やしていきます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Phase 1 完了報告 ===== -->
+<section style="padding-top:0;">
+  <div class="container">
+    <span class="section-label green">STEP 1 &#8212; Completed</span>
+    <h2 class="section-title">STEP 1: お問い合わせ導線の整備 &#8212; 完了</h2>
+    <p class="section-desc">ホームページを改善し、お客様が問い合わせ・電話・見積もり依頼をしやすい状態に整えました。あわせてGoogleビジネスプロフィールの最適化も完了しています。</p>
+
+    <!-- 1. 問い合わせ導線 -->
+    <div class="done-section">
+      <h3><span class="check">&#10003;</span> お問い合わせ導線の改善（ボタンを押しやすく）</h3>
+
+      <!-- ヘッダー図解 -->
+      <div class="header-mockup">
+        <div class="header-mockup-bar">
+          <div class="hm-logo">
+            <div class="hm-logo-icon">高木</div>
+            <div>
+              <span class="hm-logo-sub">有限会社</span>
+              <span class="hm-logo-text">髙木工務店</span>
+            </div>
+          </div>
+          <div class="hm-phone">
+            <span class="hm-new-badge">NEW</span>
+            <span>&#9742;</span>
+            <div>
+              <div class="hm-phone-num">093-561-6529</div>
+              <div class="hm-phone-time">受付 8:00-17:00</div>
+            </div>
+          </div>
+          <div class="hm-nav">
+            <span>高木工務店ついて</span>
+            <span>事業内容</span>
+            <span>施工実績</span>
+            <span>お知らせ</span>
+            <span>採用情報</span>
+            <span>ブログ</span>
+          </div>
+          <div class="hm-ctas">
+            <div class="hm-cta-green">
+              <span class="hm-new-badge">NEW</span>
+              無料見積もり→
+            </div>
+            <div class="hm-cta-orange">採用エントリー→</div>
+          </div>
+        </div>
+        <div class="hm-annotations">
+          <div class="hm-annotation"><span class="arrow">&#8593;</span> 電話番号をヘッダーに常時表示（タップ発信対応）</div>
+          <div class="hm-annotation"><span class="arrow">&#8593;</span> 無料見積もりCTAを新設（緑ボタン・パルスアニメーション付き）</div>
+        </div>
+      </div>
+
+      <div class="done-items">
+        <div class="done-item">
+          <h4><span class="icon">&#128222;</span> 電話番号ヘッダー固定</h4>
+          <p>ロゴ横に「&#9742; 093-561-6529（受付 8:00-17:00）」を追加。スマホではタップで直接発信できるように設定。</p>
+          <div class="done-item-details">
+            <span class="detail-tag">PC・スマホ対応済み</span>
+            <span class="detail-tag">タップ発信対応</span>
+          </div>
+        </div>
+        <div class="done-item">
+          <h4><span class="icon">&#128313;</span> 無料見積もりCTA設置</h4>
+          <p>ヘッダーに緑色の「無料見積もり」ボタンを新設。パルスアニメーションで視認性を向上。</p>
+          <div class="done-item-details">
+            <span class="detail-tag">全ページ表示</span>
+            <span class="detail-tag">アニメーション付き</span>
+          </div>
+        </div>
+        <div class="done-item">
+          <h4><span class="icon">&#128241;</span> モバイル固定CTAバー</h4>
+          <p>スマホ画面の下部に「&#9742; 電話で相談」+「&#9993; 無料見積もり」の固定バーを常時表示。</p>
+          <div class="done-item-details">
+            <span class="detail-tag">スマホ専用</span>
+            <span class="detail-tag">常時表示</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. GA4 -->
+    <div class="done-section">
+      <h3><span class="check">&#10003;</span> GA4 コンバージョン設定</h3>
+      <div class="done-items">
+        <div class="done-item">
+          <h4><span class="icon">&#128202;</span> 計測イベント設定完了</h4>
+          <p>フォーム送信・電話タップ・CTAクリックの3つをキーイベントとして設定。問い合わせの見落としを防止します。</p>
+          <div class="done-item-details">
+            <span class="detail-tag">フォーム送信 計測</span>
+            <span class="detail-tag">電話タップ 計測</span>
+            <span class="detail-tag">CTAクリック 計測</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. GBP -->
+    <div class="done-section">
+      <h3><span class="check">&#10003;</span> Googleビジネスプロフィール最適化 <a href="https://www.google.com/search?q=(%E6%9C%89)%E9%AB%98%E6%9C%A8%E5%B7%A5%E5%8B%99%E5%BA%97+%E5%8C%97%E4%B9%9D%E5%B7%9E" target="_blank" rel="noopener" style="font-size:.72rem;font-weight:700;color:#1a73e8;text-decoration:none;background:var(--blue-light);border-radius:100px;padding:4px 14px;margin-left:10px;vertical-align:middle;white-space:nowrap;">&#128279; Googleで確認 →</a></h3>
+
+      <!-- GBP図解 -->
+      <div class="gbp-mockup">
+        <div class="gbp-mockup-header">
+          <div class="gbp-google-logo">G</div>
+          <span style="font-size:.8rem;color:var(--gray-400);">Google 検索結果に表示されるビジネスプロフィール</span>
+        </div>
+        <div class="gbp-card">
+          <!-- 写真+地図エリア -->
+          <div style="display:flex;height:180px;overflow:hidden;">
+            <div style="flex:2;background:linear-gradient(135deg,#c8d0d8 0%,#a0b0c0 100%);display:flex;align-items:center;justify-content:center;position:relative;">
+              <div style="text-align:center;color:#fff;">
+                <div style="font-size:2.5rem;">&#128247;</div>
+                <div style="font-size:.75rem;font-weight:600;">施工写真 &#215; 3枚</div>
+              </div>
+              <span class="gbp-new-tag" style="position:absolute;top:10px;right:10px;font-size:.6rem;padding:3px 10px;">3枚追加済</span>
+            </div>
+            <div style="flex:1;background:linear-gradient(135deg,#e8edf2 0%,#d0dae5 100%);display:flex;align-items:center;justify-content:center;position:relative;">
+              <div style="text-align:center;color:var(--gray-400);">
+                <div style="font-size:1.8rem;">&#128205;</div>
+                <div style="font-size:.65rem;font-weight:600;">Google Map</div>
+                <div style="font-size:.55rem;">北九州市小倉北区</div>
+              </div>
+            </div>
+          </div>
+          <!-- メイン情報 -->
+          <div style="padding:18px 20px 10px;">
+            <h4 class="gbp-name">(有)高木工務店</h4>
+            <div class="gbp-rating">
+              <span style="font-size:1rem;font-weight:800;color:var(--gray-800);margin-right:4px;">5.0</span>
+              <span class="gbp-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="gbp-review-count">Google のクチコミ（1）</span>
+            </div>
+            <div class="gbp-meta">北九州市の工務店</div>
+          </div>
+          <!-- アクションボタン -->
+          <div style="display:flex;gap:10px;padding:0 20px 14px;flex-wrap:wrap;">
+            <div style="border:1px solid var(--gray-200);border-radius:100px;padding:8px 16px;font-size:.78rem;font-weight:600;color:#1a73e8;display:flex;align-items:center;gap:6px;">&#127760; ウェブサイト</div>
+            <div style="border:1px solid var(--gray-200);border-radius:100px;padding:8px 16px;font-size:.78rem;font-weight:600;color:#1a73e8;display:flex;align-items:center;gap:6px;">&#9654; ルート</div>
+            <div style="border:1px solid var(--gray-200);border-radius:100px;padding:8px 16px;font-size:.78rem;font-weight:600;color:#1a73e8;display:flex;align-items:center;gap:6px;">&#128222; 電話</div>
+          </div>
+          <!-- 詳細情報 -->
+          <div style="border-top:1px solid var(--gray-100);padding:14px 20px;">
+            <div class="gbp-details">
+              <div class="gbp-detail-row">
+                <span class="gbp-detail-icon">&#128205;</span>
+                <span>〒803-0827 福岡県北九州市小倉北区緑ケ丘2丁目7-20</span>
+              </div>
+              <div class="gbp-detail-row">
+                <span class="gbp-detail-icon">&#128338;</span>
+                <span>営業時間: 8:00～17:00（月～土）<span class="gbp-new-tag">修正済</span></span>
+              </div>
+              <div class="gbp-detail-row">
+                <span class="gbp-detail-icon">&#128222;</span>
+                <span style="color:#1a73e8;">093-561-6529</span>
+              </div>
+              <div class="gbp-detail-row">
+                <span class="gbp-detail-icon">&#127760;</span>
+                <span style="color:#1a73e8;">takagikomuten.jp</span>
+              </div>
+            </div>
+          </div>
+          <!-- 新規追加情報 -->
+          <div class="gbp-card-bottom" style="border-top:1px solid var(--gray-100);padding:14px 20px;">
+            <div style="font-size:.78rem;font-weight:700;color:var(--primary);margin-bottom:10px;">&#10024; 今回追加・修正した情報</div>
+            <div class="gbp-service-tags">
+              <span class="gbp-service-tag"><span class="gbp-new-tag">NEW</span> ビジネス説明文</span>
+              <span class="gbp-service-tag"><span class="gbp-new-tag">NEW</span> 開業日 1988年</span>
+              <span class="gbp-service-tag"><span class="gbp-new-tag">NEW</span> サービス提供地域</span>
+              <span class="gbp-service-tag"><span class="gbp-new-tag">NEW</span> オンライン見積もり可</span>
+              <span class="gbp-service-tag"><span class="gbp-new-tag">NEW</span> 写真 3枚追加</span>
+              <span class="gbp-service-tag"><span class="gbp-new-tag">NEW</span> 営業時間 修正</span>
+            </div>
+          </div>
+          <!-- 最新の投稿 -->
+          <div class="gbp-post-section">
+            <div class="gbp-post-label">&#128172; 最新の投稿 <span class="gbp-new-tag">NEW</span></div>
+            <div class="gbp-post-content">
+              <p>高木工務店の会社紹介～50年以上の実績と地域への想い～</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="done-items">
+        <div class="done-item">
+          <h4><span class="icon">&#128221;</span> ビジネス説明文を追加</h4>
+          <p>北九州市小倉北区を拠点に50年以上の実績を持つ地域密着型工務店として、解体工事・新築・リフォーム・修繕の対応範囲を記載しました。</p>
+          <div class="done-item-details">
+            <span class="detail-tag">182文字 / 750文字</span>
+          </div>
+        </div>
+        <div class="done-item">
+          <h4><span class="icon">&#128338;</span> 営業時間の修正</h4>
+          <p>HPヘッダーの「受付 8:00-17:00」と統一するため、月～土の開始時間を9:00から8:00に修正しました。</p>
+          <div class="done-item-details">
+            <span class="detail-tag">月～土 8:00-17:00</span>
+            <span class="detail-tag">日曜定休</span>
+          </div>
+        </div>
+        <div class="done-item">
+          <h4><span class="icon">&#128205;</span> サービス情報を充実化</h4>
+          <p>サービス提供地域「福岡県北九州市」、開業日「1988年1月」、サービスオプション（オンライン見積もり可・実店舗営業あり）を設定。</p>
+          <div class="done-item-details">
+            <span class="detail-tag">サービス提供地域</span>
+            <span class="detail-tag">開業日</span>
+            <span class="detail-tag">サービスオプション</span>
+          </div>
+        </div>
+        <div class="done-item">
+          <h4><span class="icon">&#128247;</span> 写真をアップロード</h4>
+          <p>GBPに写真3枚をアップロード済み。Googleマップでの視認性が向上しました。</p>
+          <div class="done-item-details">
+            <span class="detail-tag">3枚アップロード済み</span>
+          </div>
+        </div>
+        <div class="done-item">
+          <h4><span class="icon">&#128172;</span> 初回投稿を公開</h4>
+          <p>会社紹介の投稿をGBP上に公開。Google検索結果のビジネスプロフィール欄に直接表示されます。</p>
+          <div class="done-item-details">
+            <span class="detail-tag">投稿1件 公開済み</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 写真についてのお願い -->
+    <div style="background: #fff; border-radius: var(--radius); padding: 20px 24px; box-shadow: var(--shadow); border: 1px solid var(--gray-100); border-left: 4px solid var(--accent); margin-bottom: 32px;">
+      <p style="font-size: .9rem; color: var(--gray-800); margin: 0;"><strong>&#128247; お願い：</strong>Googleビジネスプロフィール用に、<strong>会社の外観写真</strong>をお願いいたします。スマホ撮影でOKです。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 今後の施策 ===== -->
+<section>
+  <div class="container">
+    <span class="section-label">Next Actions</span>
+    <h2 class="section-title">今後の施策</h2>
+    <p class="section-desc">引き続き実施していく4つの施策です。</p>
+
+    <div class="phase phase-2">
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon" style="background:rgba(232,150,62,.12);">&#128221;</div>
+          <h4>施工事例ページを増やす</h4>
+          <p>費用感の掲載が問い合わせの最大の後押しになります。</p>
+          <ul>
+            <li>Before/After写真付きで掲載</li>
+            <li>費用目安（「○○万円台」程度でOK）</li>
+            <li>工事の概要・期間・お客様の声</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-icon" style="background:rgba(232,150,62,.12);">&#128196;</div>
+          <h4>ブログ記事 週1本投稿</h4>
+          <p>「地域名 × 工事内容 × 悩み」で確度の高い人に届けます。</p>
+          <div class="kw-table-wrap">
+            <table class="kw-table">
+              <thead>
+                <tr>
+                  <th>狙うキーワード</th>
+                  <th>記事テーマ</th>
+                  <th>優先度</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>北九州 解体工事 費用</td>
+                  <td>費用相場はいくら？</td>
+                  <td><span class="kw-priority high">高</span></td>
+                </tr>
+                <tr>
+                  <td>解体工事 補助金 福岡</td>
+                  <td>使える補助金まとめ</td>
+                  <td><span class="kw-priority high">高</span></td>
+                </tr>
+                <tr>
+                  <td>空き家 解体 北九州</td>
+                  <td>放置リスクと解決法</td>
+                  <td><span class="kw-priority mid">中</span></td>
+                </tr>
+                <tr>
+                  <td>アスベスト 解体 注意点</td>
+                  <td>知っておくべきこと</td>
+                  <td><span class="kw-priority mid">中</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon" style="background:var(--blue-light);">&#128188;</div>
+          <h4>Indeed 掲載</h4>
+          <p>求人媒体で最もリーチが広い掲載枠を活用します。</p>
+          <ul>
+            <li>仕事内容・1日の流れを具体的に記載</li>
+            <li>写真付きで会社の雰囲気を伝える</li>
+            <li>Googleビジネスにも「求人中」投稿</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-icon" style="background:var(--green-light);">&#127775;</div>
+          <h4>Googleレビュー収集</h4>
+          <p>レビュー5件以上で地図検索の信頼度が大きく変わります。</p>
+          <ul>
+            <li>施工完了時に「口コミお願いします」と一言</li>
+            <li>QRコード付きカードを渡すと効果的</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    高木工務店 施策進捗レポート
+  </div>
+</footer>
+
+</body>
+</html>

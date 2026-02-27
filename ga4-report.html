@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高木工務店 GA4 × サーチコンソール 分析レポート</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --primary: #1a2744;
+    --accent: #e8963e;
+    --green: #2ea66a;
+    --green-light: #d4f0e0;
+    --red: #d94452;
+    --red-light: #fde8ea;
+    --blue: #3b7dd8;
+    --blue-light: #dfeafb;
+    --purple: #7c5cbf;
+    --purple-light: #ede8f8;
+    --teal: #0d9488;
+    --teal-light: #ccfbf1;
+    --gray-50: #f8f9fb;
+    --gray-100: #eef0f4;
+    --gray-200: #dce0e8;
+    --gray-400: #9aa2b1;
+    --gray-600: #5c6478;
+    --gray-800: #2d3344;
+    --radius: 12px; --radius-lg: 20px;
+    --shadow: 0 2px 12px rgba(26,39,68,.07);
+    --shadow-lg: 0 8px 32px rgba(26,39,68,.10);
+  }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",sans-serif;
+    background: var(--gray-50); color: var(--gray-800);
+    line-height: 1.7; -webkit-font-smoothing: antialiased;
+  }
+  .hero {
+    background: linear-gradient(135deg,#1a2744 0%,#2c3e6b 100%);
+    color:#fff; padding:56px 24px 44px; text-align:center;
+    position:relative; overflow:hidden;
+  }
+  .hero::after {
+    content:""; position:absolute; inset:0;
+    background: radial-gradient(circle at 20% 80%,rgba(59,125,216,.2) 0%,transparent 55%),
+                radial-gradient(circle at 80% 20%,rgba(232,150,62,.15) 0%,transparent 55%);
+  }
+  .hero>*{position:relative;z-index:1;}
+  .hero-badge {
+    display:inline-block; background:rgba(59,125,216,.25);
+    border:1px solid rgba(59,125,216,.4); border-radius:100px;
+    padding:5px 18px; font-size:.78rem; letter-spacing:.1em;
+    margin-bottom:14px; color:#a0c4f8;
+  }
+  .hero h1{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:800;margin-bottom:8px;}
+  .hero p{font-size:.95rem;opacity:.75;}
+  .hero-period {
+    display:inline-block; margin-top:12px;
+    background:rgba(255,255,255,.1); border-radius:8px;
+    padding:6px 20px; font-size:.82rem; opacity:.85;
+  }
+  .container{max-width:1000px;margin:0 auto;padding:0 24px;}
+  section{padding:48px 0;}
+  .section-label {
+    display:inline-block; font-size:.7rem; font-weight:700;
+    letter-spacing:.14em; text-transform:uppercase;
+    border-radius:6px; padding:4px 12px; margin-bottom:10px;
+  }
+  .label-blue{color:var(--blue);background:var(--blue-light);}
+  .label-green{color:var(--green);background:var(--green-light);}
+  .label-orange{color:var(--accent);background:rgba(232,150,62,.12);}
+  .label-purple{color:var(--purple);background:var(--purple-light);}
+  .label-teal{color:var(--teal);background:var(--teal-light);}
+  .label-red{color:var(--red);background:var(--red-light);}
+  .section-title{font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--primary);margin-bottom:6px;}
+  .section-desc{color:var(--gray-600);font-size:.9rem;margin-bottom:28px;}
+
+  /* KPI */
+  .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:14px;margin-bottom:32px;}
+  .kpi-card{background:#fff;border-radius:var(--radius);padding:22px 18px;box-shadow:var(--shadow);border:1px solid var(--gray-100);position:relative;overflow:hidden;text-align:center;}
+  .kpi-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;}
+  .kc-blue::before{background:var(--blue);}
+  .kc-green::before{background:var(--green);}
+  .kc-orange::before{background:var(--accent);}
+  .kc-purple::before{background:var(--purple);}
+  .kc-teal::before{background:var(--teal);}
+  .kc-red::before{background:var(--red);}
+  .kpi-icon{font-size:1.5rem;margin-bottom:6px;}
+  .kpi-value{font-size:2rem;font-weight:900;line-height:1.1;margin-bottom:4px;}
+  .kc-blue .kpi-value{color:var(--blue);}
+  .kc-green .kpi-value{color:var(--green);}
+  .kc-orange .kpi-value{color:var(--accent);}
+  .kc-purple .kpi-value{color:var(--purple);}
+  .kc-teal .kpi-value{color:var(--teal);}
+  .kc-red .kpi-value{color:var(--red);}
+  .kpi-label{font-size:.76rem;color:var(--gray-600);font-weight:600;}
+  .kpi-sub{font-size:.68rem;color:var(--gray-400);margin-top:3px;}
+  .kpi-trend{display:inline-flex;align-items:center;gap:3px;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:100px;margin-top:6px;}
+  .trend-up{background:var(--green-light);color:var(--green);}
+  .trend-warn{background:rgba(232,150,62,.12);color:var(--accent);}
+  .trend-flat{background:var(--gray-100);color:var(--gray-400);}
+
+  /* CHART */
+  .chart-card{background:#fff;border-radius:var(--radius-lg);padding:28px 24px;box-shadow:var(--shadow);border:1px solid var(--gray-100);margin-bottom:20px;}
+  .chart-card h3{font-size:1rem;font-weight:800;color:var(--primary);margin-bottom:4px;}
+  .chart-note{font-size:.75rem;color:var(--gray-400);margin-bottom:18px;}
+  .chart-wrap{position:relative;height:260px;}
+
+  /* ALERT */
+  .alert{border-radius:var(--radius);padding:16px 20px;margin-bottom:18px;display:flex;gap:12px;align-items:flex-start;}
+  .alert-warn{background:rgba(217,68,82,.07);border:1px solid rgba(217,68,82,.2);}
+  .alert-info{background:var(--blue-light);border:1px solid rgba(59,125,216,.2);}
+  .alert-success{background:var(--green-light);border:1px solid rgba(46,166,106,.25);}
+  .alert-star{background:linear-gradient(135deg,rgba(244,180,0,.1) 0%,rgba(232,150,62,.1) 100%);border:2px solid #f4b400;}
+  .alert-icon{font-size:1.25rem;flex-shrink:0;margin-top:1px;}
+  .alert-body h4{font-size:.88rem;font-weight:700;color:var(--primary);margin-bottom:3px;}
+  .alert-body p{font-size:.8rem;color:var(--gray-600);}
+
+  /* TABLE */
+  .tbl-wrap{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--gray-100);overflow-x:auto;margin-bottom:20px;}
+  .tbl{width:100%;border-collapse:collapse;font-size:.82rem;}
+  .tbl th{background:var(--primary);color:#fff;text-align:left;padding:11px 14px;font-weight:700;font-size:.74rem;letter-spacing:.04em;white-space:nowrap;}
+  .tbl td{padding:11px 14px;border-bottom:1px solid var(--gray-100);color:var(--gray-600);vertical-align:middle;}
+  .tbl tr:last-child td{border-bottom:none;}
+  .tbl tr:hover td{background:var(--gray-50);}
+  .num{font-weight:800;color:var(--primary);font-size:.92rem;}
+  .num-big{font-weight:900;color:var(--blue);font-size:1.1rem;}
+  .up{color:var(--green);font-weight:700;font-size:.75rem;}
+  .warn-text{color:var(--accent);font-weight:600;font-size:.75rem;}
+  .na{color:var(--gray-400);}
+  .tag{display:inline-block;font-size:.62rem;font-weight:700;padding:2px 8px;border-radius:100px;margin:1px;}
+  .tag-blue{background:var(--blue-light);color:var(--blue);}
+  .tag-green{background:var(--green-light);color:var(--green);}
+  .tag-orange{background:rgba(232,150,62,.12);color:var(--accent);}
+  .tag-purple{background:var(--purple-light);color:var(--purple);}
+  .tag-teal{background:var(--teal-light);color:var(--teal);}
+  .tag-red{background:var(--red-light);color:var(--red);}
+
+  /* MINI BAR */
+  .mb-wrap{margin:8px 0 3px;}
+  .mb-row{display:flex;justify-content:space-between;font-size:.72rem;color:var(--gray-600);margin-bottom:3px;}
+  .mb{height:7px;background:var(--gray-100);border-radius:100px;overflow:hidden;}
+  .mb-fill{height:100%;border-radius:100px;}
+
+  /* ARTICLE CARDS */
+  .article-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:16px;}
+  .ac{background:#fff;border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);border:1px solid var(--gray-100);border-top:4px solid;}
+  .ac:nth-child(1){border-color:var(--blue);}
+  .ac:nth-child(2){border-color:var(--green);}
+  .ac:nth-child(3){border-color:var(--accent);}
+  .ac:nth-child(4){border-color:var(--purple);}
+  .ac:nth-child(5){border-color:var(--teal);}
+  .ac-date{font-size:.68rem;font-weight:700;letter-spacing:.05em;color:var(--gray-400);margin-bottom:5px;}
+  .ac-title{font-size:.92rem;font-weight:800;color:var(--primary);margin-bottom:6px;}
+  .ac-url{font-size:.66rem;color:var(--gray-400);margin-bottom:12px;font-family:monospace;word-break:break-all;}
+  .ac-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px;}
+  .ac-stat{background:var(--gray-50);border-radius:8px;padding:9px 10px;text-align:center;}
+  .ac-val{font-size:1.35rem;font-weight:900;line-height:1;}
+  .ac:nth-child(1) .ac-val{color:var(--blue);}
+  .ac:nth-child(2) .ac-val{color:var(--green);}
+  .ac:nth-child(3) .ac-val{color:var(--accent);}
+  .ac:nth-child(4) .ac-val{color:var(--purple);}
+  .ac:nth-child(5) .ac-val{color:var(--teal);}
+  .ac-stat-label{font-size:.63rem;color:var(--gray-400);font-weight:600;margin-top:2px;}
+  .ac-insight{font-size:.77rem;color:var(--gray-600);background:var(--gray-50);border-radius:8px;padding:9px 11px;border-left:3px solid var(--gray-200);}
+  .ac:nth-child(1) .ac-insight{border-color:var(--blue);background:var(--blue-light);}
+  .ac:nth-child(2) .ac-insight{border-color:var(--green);background:var(--green-light);}
+  .ac:nth-child(3) .ac-insight{border-color:var(--accent);background:rgba(232,150,62,.08);}
+  .ac:nth-child(4) .ac-insight{border-color:var(--purple);background:var(--purple-light);}
+  .ac:nth-child(5) .ac-insight{border-color:var(--teal);background:var(--teal-light);}
+  .ac-pv-row{display:flex;justify-content:space-between;font-size:.72rem;color:var(--gray-600);margin:2px 0;}
+
+  /* RANK */
+  .rank-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+  .rank-card{background:#fff;border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);border:1px solid var(--gray-100);}
+  .rank-card h4{font-size:.88rem;font-weight:800;color:var(--primary);margin-bottom:12px;}
+  .rank-item{display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid var(--gray-100);font-size:.78rem;}
+  .rank-item:last-child{border-bottom:none;}
+  .rn{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:900;color:#fff;flex-shrink:0;}
+  .rn-1{background:#f4b400;} .rn-2{background:#9aa2b1;} .rn-3{background:#c87533;}
+  .rn-x{background:var(--gray-200);color:var(--gray-600);}
+  .rk{flex:1;color:var(--gray-600);font-size:.75rem;}
+  .rv{font-weight:800;color:var(--primary);flex-shrink:0;font-size:.8rem;}
+  .rv-na{color:var(--gray-400);}
+  .rpos{font-size:.68rem;background:var(--gray-100);border-radius:100px;padding:1px 7px;color:var(--gray-600);flex-shrink:0;}
+  .rpos-star{background:rgba(244,180,0,.15);color:#b8860b;font-weight:700;}
+
+  /* INSIGHT PANEL */
+  .insight-panel{background:linear-gradient(135deg,var(--primary) 0%,#2c3e6b 100%);color:#fff;border-radius:var(--radius-lg);padding:28px;margin-top:8px;}
+  .insight-panel h3{font-size:1.1rem;font-weight:800;margin-bottom:18px;}
+  .insight-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;}
+  .ii{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:16px;}
+  .ii h4{font-size:.86rem;font-weight:700;margin-bottom:6px;}
+  .ii p{font-size:.78rem;opacity:.75;}
+  .ii .badge{display:inline-block;font-size:.6rem;font-weight:700;padding:2px 8px;border-radius:100px;margin-bottom:7px;}
+  .b-ok{background:rgba(46,166,106,.3);color:#7de8b0;}
+  .b-warn{background:rgba(232,150,62,.3);color:#fcd080;}
+  .b-star{background:rgba(244,180,0,.3);color:#fde08a;}
+
+  footer{text-align:center;padding:36px 20px;font-size:.74rem;color:var(--gray-400);}
+
+  @media(max-width:640px){
+    section{padding:32px 0;}
+    .chart-wrap{height:200px;}
+    .rank-grid{grid-template-columns:1fr;}
+    .kpi-grid{grid-template-columns:1fr 1fr;}
+    .insight-items{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-badge">DATA ANALYTICS REPORT — 最新版</div>
+  <h1>GA4 × サーチコンソール 分析レポート</h1>
+  <p>高木工務店 &#8212; ホームページ開設〜現在までの全データ</p>
+  <div class="hero-period">集計期間：2025年12月26日 〜 2026年2月27日（約9週間）</div>
+</header>
+
+<!-- 1. KPI -->
+<section>
+  <div class="container">
+    <span class="section-label label-blue">Overview</span>
+    <h2 class="section-title">現状サマリー</h2>
+    <p class="section-desc">直近14日間（2/2〜2/15）のデータをもとにした主要指標です。</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card kc-blue">
+        <div class="kpi-icon">&#128196;</div>
+        <div class="kpi-value">97</div>
+        <div class="kpi-label">ページビュー数</div>
+        <div class="kpi-sub">2/2〜2/15（2週間）</div>
+        <div class="kpi-trend trend-up">&#8593; 開設初期比 +185%</div>
+      </div>
+      <div class="kpi-card kc-green">
+        <div class="kpi-icon">&#128269;</div>
+        <div class="kpi-value">8</div>
+        <div class="kpi-label">検索クリック数</div>
+        <div class="kpi-sub">2/2〜2/15（2週間）</div>
+        <div class="kpi-trend trend-up">&#8593; 開設初期比 +∞</div>
+      </div>
+      <div class="kpi-card kc-teal">
+        <div class="kpi-icon">&#128200;</div>
+        <div class="kpi-value">1位</div>
+        <div class="kpi-label">工務店 北九州</div>
+        <div class="kpi-sub">検索順位（2/2〜2/15）</div>
+        <div class="kpi-trend trend-up">&#9733; 一般KWで最高位</div>
+      </div>
+      <div class="kpi-card kc-orange">
+        <div class="kpi-icon">&#128221;</div>
+        <div class="kpi-value">5</div>
+        <div class="kpi-label">投稿記事数</div>
+        <div class="kpi-sub">開設〜現在の合計</div>
+        <div class="kpi-trend trend-up">&#8593; 継続投稿中</div>
+      </div>
+      <div class="kpi-card kc-red">
+        <div class="kpi-icon">&#128222;</div>
+        <div class="kpi-value">0</div>
+        <div class="kpi-label">コンバージョン数</div>
+        <div class="kpi-sub">問い合わせ・採用エントリー</div>
+        <div class="kpi-trend trend-flat">&#9642; 導線整備済・獲得目標中</div>
+      </div>
+    </div>
+
+    <!-- 異常値アラート -->
+    <div class="alert alert-warn">
+      <div class="alert-icon">&#9888;&#65039;</div>
+      <div class="alert-body">
+        <h4>【異常値について】1/5〜1/18 の 173PV は過大計上の可能性あり</h4>
+        <p>この期間に <code>/contact/contact-completed/</code>（フォーム送信完了ページ）が <strong>43PV</strong> 記録されました。しかしコンバージョンイベント（contact_completed）は <strong>0件</strong> のままです。<br>
+        通常、完了ページはフォーム送信後にしか到達できないため、これは ① URLの直接アクセス・ブックマーク ② ボットのクロール ③ テスト送信 のいずれかが原因と考えられます。この期間の実質的なユーザーPVは 173 よりかなり少ない可能性があります。</p>
+      </div>
+    </div>
+
+    <!-- 2/2〜2/15 データ修正アラート -->
+    <div class="alert alert-success">
+      <div class="alert-icon">&#9989;</div>
+      <div class="alert-body">
+        <h4>2/2〜2/15 のデータを正常に取得しました（PV: 97件 / クリック: 8件）</h4>
+        <p>以前のCSVファイルが空だったのは、自動取得スクリプトの保存先パスの設定ミスによるものでした。APIから直接再取得し、正しいデータを確認しています。</p>
+      </div>
+    </div>
+
+    <!-- 注目アラート -->
+    <div class="alert alert-star">
+      <div class="alert-icon">&#9733;</div>
+      <div class="alert-body">
+        <h4>【重要な発見】「工務店 北九州」で検索順位 <span style="color:#b8860b;font-size:1.1em;">1.0位</span>！クリック獲得まであと一歩</h4>
+        <p>2/2〜2/15の期間に「工務店 北九州」が検索順位 <strong>1位</strong>（表示14回・クリック0）、「北九州 工務店」が <strong>3.5位</strong>（表示23回・クリック0）を記録しています。<br>
+        上位表示はできているのにクリックされていない = <strong>タイトル・説明文の改善</strong>でクリックに転換できる大きなチャンスです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. PV TREND -->
+<section style="padding-top:0;">
+  <div class="container">
+    <span class="section-label label-blue">GA4 Trends</span>
+    <h2 class="section-title">ページビュー推移</h2>
+    <p class="section-desc">2週間ごとの集計。記事を投稿するたびにアクセスが拡大しています。</p>
+
+    <div class="chart-card">
+      <h3>&#128196; PV数の推移（2週間ごと）</h3>
+      <p class="chart-note">※1/5〜1/18の173PVは異常値を含む可能性あり。　※各期間は2週間の累計。</p>
+      <div class="chart-wrap">
+        <canvas id="pvChart"></canvas>
+      </div>
+    </div>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th>計測期間</th>
+            <th>PV</th>
+            <th>検索クリック</th>
+            <th>コンバージョン</th>
+            <th>この期間の主な動き</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>12/26 〜 1/8</td>
+            <td class="num">34</td>
+            <td class="num">0</td>
+            <td class="num">0</td>
+            <td>HP開設直後。指名検索のみ。</td>
+          </tr>
+          <tr>
+            <td>1/5 〜 1/18</td>
+            <td><span class="num">173</span> <span class="warn-text">※異常値含む</span></td>
+            <td class="num">2</td>
+            <td class="num">0</td>
+            <td>
+              <span class="tag tag-blue">&#128221; 新年のご挨拶 公開</span><br>
+              <small class="na">/contact/contact-completed/ 43PV異常を含む</small>
+            </td>
+          </tr>
+          <tr>
+            <td>1/19 〜 2/1</td>
+            <td class="num">84</td>
+            <td class="num">8</td>
+            <td class="num">0</td>
+            <td>
+              <span class="tag tag-green">&#128221; 冬の解体注意点 公開</span><br>
+              検索クリックが初めて8件に急増
+            </td>
+          </tr>
+          <tr>
+            <td>1/22 〜 2/4</td>
+            <td class="num">111</td>
+            <td class="num">10</td>
+            <td class="num">0</td>
+            <td>
+              <span class="tag tag-orange">&#128221; HPオープンお知らせ 公開</span><br>
+              クリック・PVともに最高値
+            </td>
+          </tr>
+          <tr style="background:rgba(46,166,106,.04);">
+            <td><strong>2/2 〜 2/15</strong> <span class="tag tag-green">最新取得</span></td>
+            <td class="num-big">97</td>
+            <td class="num" style="color:var(--green);">8</td>
+            <td class="num">0</td>
+            <td>
+              <span class="tag tag-teal">&#128221; 木造解体の基礎知識 公開</span><br>
+              「工務店 北九州」順位 <strong style="color:#b8860b;">1位</strong>
+            </td>
+          </tr>
+          <tr style="background:var(--gray-50);">
+            <td>2/14 〜 2/27 <span class="tag tag-blue">直近</span></td>
+            <td class="num">42</td>
+            <td class="num">2</td>
+            <td class="num">0</td>
+            <td class="na">計測中（新規ページ1件確認）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 3. SEARCH CONSOLE -->
+<section style="padding-top:0;">
+  <div class="container">
+    <span class="section-label label-green">Search Console</span>
+    <h2 class="section-title">検索パフォーマンス推移</h2>
+    <p class="section-desc">Google検索からのクリック数と主要キーワードの状況です。</p>
+
+    <div class="chart-card">
+      <h3>&#128269; 検索クリック数の推移</h3>
+      <p class="chart-note">記事投稿のたびにクリック数が増加しています。</p>
+      <div class="chart-wrap">
+        <canvas id="gscChart"></canvas>
+      </div>
+    </div>
+
+    <div class="rank-grid">
+      <div class="rank-card">
+        <h4>&#128269; 2/2〜2/15 キーワード詳細 <span class="tag tag-green">最新</span></h4>
+        <div class="rank-item">
+          <div class="rn rn-1">1</div>
+          <div class="rk">高木工務店</div>
+          <div class="rv">5クリック</div>
+          <div class="rpos">順位3.7</div>
+        </div>
+        <div class="rank-item">
+          <div class="rn rn-2">2</div>
+          <div class="rk">有限会社高木工務店</div>
+          <div class="rv">2クリック</div>
+          <div class="rpos">順位4.5</div>
+        </div>
+        <div class="rank-item">
+          <div class="rn rn-3">3</div>
+          <div class="rk">北九州市 工務店</div>
+          <div class="rv">1クリック</div>
+          <div class="rpos">順位15.5</div>
+        </div>
+        <div class="rank-item">
+          <div class="rn rn-x">&#8212;</div>
+          <div class="rk" style="font-weight:700;color:var(--primary);">北九州 工務店</div>
+          <div class="rv rv-na">0クリック</div>
+          <div class="rpos rpos-star">&#9733; 1位！</div>
+        </div>
+        <div class="rank-item">
+          <div class="rn rn-x">&#8212;</div>
+          <div class="rk" style="font-weight:700;color:var(--primary);">工務店 北九州</div>
+          <div class="rv rv-na">0クリック</div>
+          <div class="rpos rpos-star">&#9733; 3.5位</div>
+        </div>
+        <div class="rank-item">
+          <div class="rn rn-x">&#8212;</div>
+          <div class="rk">高木工務店 福岡</div>
+          <div class="rv rv-na">0クリック</div>
+          <div class="rpos">順位8.1</div>
+        </div>
+        <div class="rank-item">
+          <div class="rn rn-x">&#8212;</div>
+          <div class="rk">髙木工務店</div>
+          <div class="rv rv-na">0クリック</div>
+          <div class="rpos">順位2.8</div>
+        </div>
+      </div>
+      <div class="rank-card">
+        <h4>&#128204; 表示回数ランキング（2/2〜2/15）</h4>
+        <p style="font-size:.75rem;color:var(--gray-600);margin-bottom:12px;">クリックはされていないが検索結果に表示されているキーワード。上位表示できているのにクリックされていない＝タイトル改善で効果大。</p>
+        <div class="rank-item">
+          <div class="rn rn-1">1</div>
+          <div class="rk">北九州 工務店</div>
+          <div class="rv">23回表示</div>
+          <div class="rpos rpos-star">&#9733; 3.5位</div>
+        </div>
+        <div class="rank-item">
+          <div class="rn rn-2">2</div>
+          <div class="rk">高木工務店</div>
+          <div class="rv">29回表示</div>
+          <div class="rpos">CTR 17%</div>
+        </div>
+        <div class="rank-item">
+          <div class="rn rn-3">3</div>
+          <div class="rk">工務店 北九州</div>
+          <div class="rv">14回表示</div>
+          <div class="rpos rpos-star">&#9733; 1.0位</div>
+        </div>
+        <div class="rank-item">
+          <div class="rn rn-x">4</div>
+          <div class="rk">髙木工務店</div>
+          <div class="rv">13回表示</div>
+          <div class="rpos">順位2.8</div>
+        </div>
+        <div class="rank-item">
+          <div class="rn rn-x">5</div>
+          <div class="rk">高木工務店 福岡</div>
+          <div class="rv">8回表示</div>
+          <div class="rpos">順位8.1</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-star">
+      <div class="alert-icon">&#9888;</div>
+      <div class="alert-body">
+        <h4>「工務店 北九州」が <strong>1位表示・0クリック</strong> の理由と対策</h4>
+        <p>検索1位なのにクリックされていない主な原因は、<strong>タイトルタグや説明文（メタディスクリプション）がユーザーの検索意図と合っていない</strong>ことです。例えばタイトルに「北九州市の解体・リフォームなら高木工務店」のように地域名と強みを入れることで、クリック率が大幅に改善します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. TOP PAGES -->
+<section style="padding-top:0;">
+  <div class="container">
+    <span class="section-label label-orange">Page Analysis</span>
+    <h2 class="section-title">ページ別アクセス状況（2/2〜2/15）</h2>
+    <p class="section-desc">どのページが見られているかを確認します。全17ページ・合計97PV。</p>
+
+    <div class="chart-card">
+      <h3>&#128206; ページ別PVランキング</h3>
+      <p class="chart-note">トップ・会社概要・採用・サービスの順にアクセスが集中しています。</p>
+      <div style="margin-top:8px;">
+        <div class="mb-wrap"><div class="mb-row"><span>/ （トップページ）</span><span><strong>36 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:100%;background:var(--blue);"></div></div></div>
+        <div class="mb-wrap"><div class="mb-row"><span>/about/（会社概要）</span><span><strong>14 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:39%;background:var(--blue);"></div></div></div>
+        <div class="mb-wrap"><div class="mb-row"><span>/service/（サービス）</span><span><strong>9 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:25%;background:var(--blue);"></div></div></div>
+        <div class="mb-wrap"><div class="mb-row"><span>/interview/interview1/（インタビュー）</span><span><strong>6 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:17%;background:var(--purple);"></div></div></div>
+        <div class="mb-wrap"><div class="mb-row"><span>/recruit/（採用）</span><span><strong>6 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:17%;background:var(--green);"></div></div></div>
+        <div class="mb-wrap"><div class="mb-row"><span>/works/（施工実績）</span><span><strong>5 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:14%;background:var(--accent);"></div></div></div>
+        <div class="mb-wrap"><div class="mb-row"><span>/news/（お知らせ）</span><span><strong>4 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:11%;background:var(--accent);"></div></div></div>
+        <div class="mb-wrap"><div class="mb-row"><span>/blog/（ブログ一覧）</span><span><strong>3 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:8%;background:var(--accent);"></div></div></div>
+        <div class="mb-wrap"><div class="mb-row"><span>/contact/（お問い合わせ）</span><span><strong>3 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:8%;background:var(--red);"></div></div></div>
+        <div class="mb-wrap"><div class="mb-row"><span>/blog/fuyu-kaitai-chuui-2026/（冬の解体注意点）</span><span><strong>2 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:6%;background:var(--teal);"></div></div></div>
+        <div class="mb-wrap"><div class="mb-row"><span>/blog/新記事（木造解体の基礎知識）</span><span><strong>2+1 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:8%;background:var(--teal);"></div></div></div>
+      </div>
+      <div style="margin-top:14px;padding:10px 14px;background:var(--green-light);border-radius:8px;font-size:.79rem;color:#1a7a4a;">
+        <strong>&#128204; ポイント：</strong>採用ページが6PVで安定。サービスページも9PVと上位。問い合わせページへの到達（3PV）も確認できています。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. ARTICLE IMPACT -->
+<section style="padding-top:0;">
+  <div class="container">
+    <span class="section-label label-purple">Article Impact</span>
+    <h2 class="section-title">記事別インパクト分析</h2>
+    <p class="section-desc">投稿した5記事のアクセス数と効果を期間別に確認します。</p>
+
+    <div class="article-grid">
+
+      <div class="ac">
+        <div class="ac-date">&#128197; 2025年12月 公開</div>
+        <div class="ac-title">解体工事の施工事例①</div>
+        <div class="ac-url">/blog/demolition-work1/</div>
+        <div class="ac-stats">
+          <div class="ac-stat"><div class="ac-val">4</div><div class="ac-stat-label">累計PV</div></div>
+          <div class="ac-stat"><div class="ac-val">1</div><div class="ac-stat-label">期間最大PV</div></div>
+        </div>
+        <div class="ac-pv-row"><span>12/26〜1/8</span><strong>1 PV</strong></div>
+        <div class="ac-pv-row"><span>1/5〜1/18</span><strong>1 PV</strong></div>
+        <div class="ac-pv-row"><span>1/22〜2/4</span><strong>1 PV</strong></div>
+        <div class="ac-pv-row"><span>2/2〜2/15</span><strong>1 PV</strong></div>
+        <div class="ac-insight" style="margin-top:10px;">毎期間コンスタントにアクセスあり。写真・費用感を追記することで問い合わせ直結記事に育てられます。</div>
+      </div>
+
+      <div class="ac">
+        <div class="ac-date">&#128197; 2026年1月上旬 公開</div>
+        <div class="ac-title">新年のご挨拶 2026年</div>
+        <div class="ac-url">/blog/new-year-greeting-2026/</div>
+        <div class="ac-stats">
+          <div class="ac-stat"><div class="ac-val">11</div><div class="ac-stat-label">累計PV</div></div>
+          <div class="ac-stat"><div class="ac-val">5</div><div class="ac-stat-label">公開週最大PV</div></div>
+        </div>
+        <div class="ac-pv-row"><span>1/5〜1/18（公開直後）</span><strong style="color:var(--green)">5 PV &#9650;</strong></div>
+        <div class="ac-pv-row"><span>1/19〜2/1</span><strong>1 PV</strong></div>
+        <div class="ac-pv-row"><span>1/22〜2/4</span><strong>2 PV</strong></div>
+        <div class="ac-pv-row"><span>2/2〜2/15</span><strong>2 PV</strong></div>
+        <div class="ac-pv-row"><span>2/14〜2/27</span><strong>1 PV</strong></div>
+        <div class="ac-insight" style="margin-top:10px;">公開直後に5PVを獲得。時事性コンテンツとして効果的。来年も活用できます。</div>
+      </div>
+
+      <div class="ac">
+        <div class="ac-date">&#128197; 2026年1月中旬 公開</div>
+        <div class="ac-title">冬の解体工事の注意点</div>
+        <div class="ac-url">/blog/fuyu-kaitai-chuui-2026/</div>
+        <div class="ac-stats">
+          <div class="ac-stat"><div class="ac-val">6</div><div class="ac-stat-label">累計PV</div></div>
+          <div class="ac-stat"><div class="ac-val">+8</div><div class="ac-stat-label">公開後クリック増加</div></div>
+        </div>
+        <div class="ac-pv-row"><span>1/19〜2/1（公開直後）</span><strong style="color:var(--accent)">2 PV &#9650;</strong></div>
+        <div class="ac-pv-row"><span>1/22〜2/4</span><strong>1 PV</strong></div>
+        <div class="ac-pv-row"><span>2/2〜2/15</span><strong>2 PV</strong></div>
+        <div class="ac-pv-row"><span>2/14〜2/27</span><strong>1 PV</strong></div>
+        <div class="ac-insight" style="margin-top:10px;">この記事公開後に検索クリックが0→8に急増。Googleが「解体工事の会社」として認識し始めたサインです。</div>
+      </div>
+
+      <div class="ac">
+        <div class="ac-date">&#128197; 2026年1月下旬 公開</div>
+        <div class="ac-title">ホームページ新規オープンのお知らせ</div>
+        <div class="ac-url">/blog/hp-new/</div>
+        <div class="ac-stats">
+          <div class="ac-stat"><div class="ac-val">2</div><div class="ac-stat-label">累計PV</div></div>
+          <div class="ac-stat"><div class="ac-val">+10</div><div class="ac-stat-label">公開期クリック数</div></div>
+        </div>
+        <div class="ac-pv-row"><span>1/22〜2/4（公開直後）</span><strong>1 PV</strong></div>
+        <div class="ac-pv-row"><span>2/2〜2/15</span><strong>1 PV</strong></div>
+        <div class="ac-insight" style="margin-top:10px;">会社の信頼性向上コンテンツ。HP全体の活動頻度を示し、Googleの評価向上に貢献しています。</div>
+      </div>
+
+      <div class="ac">
+        <div class="ac-date">&#128197; 2026年2月上旬 公開 <span class="tag tag-teal">NEW</span></div>
+        <div class="ac-title">木造解体の基礎知識〜古民家から現代住宅まで</div>
+        <div class="ac-url">/blog/mokuzou-kaitai-kiso-kominka-gendai-jutaku/</div>
+        <div class="ac-stats">
+          <div class="ac-stat"><div class="ac-val">3</div><div class="ac-stat-label">累計PV（確認済み）</div></div>
+          <div class="ac-stat"><div class="ac-val">2</div><div class="ac-stat-label">公開週PV</div></div>
+        </div>
+        <div class="ac-pv-row"><span>2/2〜2/15（公開直後）</span><strong style="color:var(--teal)">2+1 PV &#9650;</strong></div>
+        <div class="ac-insight" style="margin-top:10px;">解体系キーワードでの検索表示増加が期待されます。「古民家 解体 北九州」などのニッチKWで上位表示の可能性があります。</div>
+      </div>
+
+    </div>
+
+    <div class="chart-card" style="margin-top:20px;">
+      <h3>&#128200; 記事投稿タイミングと検索クリックの相関</h3>
+      <p class="chart-note">解体系の記事を投稿するたびに検索クリックが増加しています。</p>
+      <div class="chart-wrap">
+        <canvas id="correlationChart"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. INSIGHTS -->
+<section style="padding-top:0;">
+  <div class="container">
+    <span class="section-label label-green">Key Insights</span>
+    <h2 class="section-title">分析から分かること・次のアクション</h2>
+
+    <div class="insight-panel">
+      <h3>&#128204; 重要な発見と推奨アクション</h3>
+      <div class="insight-items">
+        <div class="ii">
+          <div class="badge b-star">&#9733; 最重要</div>
+          <h4>「工務店 北九州」1位表示中 → タイトル改善で即効果</h4>
+          <p>上位表示済みなのに0クリック。トップページのタイトルタグに「北九州市の解体・工務店なら」等の地域＋強みを追加することで、今すぐクリック数を増やせます。</p>
+        </div>
+        <div class="ii">
+          <div class="badge b-ok">&#9989; 良い兆し</div>
+          <h4>解体系記事が検索クリックを牽引</h4>
+          <p>「冬の解体注意点」「木造解体の基礎知識」など解体関連記事の投稿とともにクリック数が増加。今後も解体・リフォーム関連の記事を継続投稿することが重要です。</p>
+        </div>
+        <div class="ii">
+          <div class="badge b-ok">&#9989; 良い兆し</div>
+          <h4>採用・サービスページへのアクセスが安定</h4>
+          <p>採用ページ（6PV）・サービスページ（9PV）への流入が続いています。問い合わせページへの到達（3PV）も確認。導線整備が効果を発揮しつつあります。</p>
+        </div>
+        <div class="ii">
+          <div class="badge b-warn">&#9888; 課題</div>
+          <h4>1/5〜1/18の173PV異常値を調査</h4>
+          <p>/contact/contact-completed/ の43PV原因不明。GA4のフィルター設定でボットを除外しているか確認し、実態に即したデータ計測を整備することを推奨します。</p>
+        </div>
+        <div class="ii">
+          <div class="badge b-warn">&#9888; 課題</div>
+          <h4>コンバージョンはまだゼロ</h4>
+          <p>問い合わせ・採用エントリーとも0件継続中。ヘッダーCTA・電話番号固定の改善は完了しているため、アクセス数の増加とともに近いうちに獲得が期待できます。</p>
+        </div>
+        <div class="ii">
+          <div class="badge b-warn">&#9888; 確認事項</div>
+          <h4>2/14〜2/27のPVが42と低下</h4>
+          <p>直近期間でPVが97→42に落ちています。季節的な変動の可能性もありますが、GA4タグの動作確認と、サイトのエラーがないかを確認することを推奨します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    高木工務店 GA4 × サーチコンソール 分析レポート &#8212; 2026年2月27日 作成（最新データ反映済み）
+  </div>
+</footer>
+
+<script>
+const labels6 = ['12/26〜1/8','1/5〜1/18','1/19〜2/1','1/22〜2/4','2/2〜2/15','2/14〜2/27'];
+const pvData   = [34, 173, 84, 111, 97, 42];
+const gscData  = [0, 2, 8, 10, 8, 2];
+const artData  = [1, 2, 3, 4, 5, 5];
+
+const baseOpts = {
+  responsive:true, maintainAspectRatio:false,
+  plugins:{
+    legend:{labels:{font:{family:'Hiragino Sans,sans-serif',size:11},color:'#5c6478'}},
+    tooltip:{backgroundColor:'#1a2744',titleFont:{size:12},bodyFont:{size:11}}
+  },
+  scales:{
+    x:{grid:{color:'#eef0f4'},ticks:{color:'#9aa2b1',font:{size:10}}},
+    y:{grid:{color:'#eef0f4'},ticks:{color:'#9aa2b1',font:{size:10}}}
+  }
+};
+
+new Chart(document.getElementById('pvChart'),{
+  type:'bar',
+  data:{
+    labels:labels6,
+    datasets:[{
+      label:'ページビュー数',
+      data:pvData,
+      backgroundColor:['rgba(59,125,216,.65)','rgba(217,68,82,.55)','rgba(59,125,216,.65)','rgba(59,125,216,.65)','rgba(46,166,106,.8)','rgba(59,125,216,.45)'],
+      borderColor:['#3b7dd8','#d94452','#3b7dd8','#3b7dd8','#2ea66a','#3b7dd8'],
+      borderWidth:2, borderRadius:6
+    }]
+  },
+  options:{
+    ...baseOpts,
+    plugins:{
+      ...baseOpts.plugins,
+      tooltip:{
+        ...baseOpts.plugins.tooltip,
+        callbacks:{
+          afterLabel:(ctx)=>{
+            const n=['','※異常値含む可能性あり','冬の解体注意点 公開','HPオープンお知らせ 公開','木造解体の基礎知識 公開','最新（計測中）'];
+            return n[ctx.dataIndex]?'📝 '+n[ctx.dataIndex]:'';
+          }
+        }
+      }
+    }
+  }
+});
+
+new Chart(document.getElementById('gscChart'),{
+  type:'line',
+  data:{
+    labels:labels6,
+    datasets:[{
+      label:'検索クリック数',
+      data:gscData,
+      borderColor:'#2ea66a', backgroundColor:'rgba(46,166,106,.1)',
+      borderWidth:2.5, pointBackgroundColor:'#2ea66a', pointRadius:5,
+      tension:0.35, fill:true
+    }]
+  },
+  options:baseOpts
+});
+
+new Chart(document.getElementById('correlationChart'),{
+  type:'line',
+  data:{
+    labels:labels6,
+    datasets:[
+      {label:'PV数',data:pvData,borderColor:'#3b7dd8',backgroundColor:'rgba(59,125,216,.07)',borderWidth:2,pointRadius:4,tension:0.3,fill:true,yAxisID:'y'},
+      {label:'検索クリック',data:gscData,borderColor:'#2ea66a',backgroundColor:'rgba(46,166,106,.07)',borderWidth:2,pointRadius:4,tension:0.3,fill:true,yAxisID:'y1'},
+      {label:'記事投稿数（累計）',data:artData,borderColor:'#e8963e',borderWidth:2,pointBackgroundColor:'#e8963e',pointRadius:6,borderDash:[5,3],tension:0.1,fill:false,yAxisID:'y1'}
+    ]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{
+      legend:{labels:{font:{family:'Hiragino Sans,sans-serif',size:11},color:'#5c6478'}},
+      tooltip:{backgroundColor:'#1a2744'}
+    },
+    scales:{
+      x:{grid:{color:'#eef0f4'},ticks:{color:'#9aa2b1',font:{size:10}}},
+      y:{type:'linear',position:'left',grid:{color:'#eef0f4'},ticks:{color:'#3b7dd8',font:{size:10}},title:{display:true,text:'PV数',color:'#3b7dd8',font:{size:10}}},
+      y1:{type:'linear',position:'right',grid:{drawOnChartArea:false},ticks:{color:'#2ea66a',font:{size:10}},title:{display:true,text:'クリック / 記事数',color:'#2ea66a',font:{size:10}}}
+    }
+  }
+});
+</script>
+</body>
+</html>
