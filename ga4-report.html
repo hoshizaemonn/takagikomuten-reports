@@ -98,6 +98,7 @@
   .kpi-sub{font-size:.68rem;color:var(--gray-400);margin-top:3px;}
   .kpi-trend{display:inline-flex;align-items:center;gap:3px;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:100px;margin-top:6px;}
   .trend-up{background:var(--green-light);color:var(--green);}
+  .trend-down{background:var(--red-light);color:var(--red);}
   .trend-warn{background:rgba(232,150,62,.12);color:var(--accent);}
   .trend-flat{background:var(--gray-100);color:var(--gray-400);}
 
@@ -151,6 +152,7 @@
   .ac:nth-child(3){border-color:var(--accent);}
   .ac:nth-child(4){border-color:var(--purple);}
   .ac:nth-child(5){border-color:var(--teal);}
+  .ac:nth-child(6){border-color:var(--red);}
   .ac-date{font-size:.68rem;font-weight:700;letter-spacing:.05em;color:var(--gray-400);margin-bottom:5px;}
   .ac-title{font-size:.92rem;font-weight:800;color:var(--primary);margin-bottom:6px;}
   .ac-url{font-size:.66rem;color:var(--gray-400);margin-bottom:12px;font-family:monospace;word-break:break-all;}
@@ -162,6 +164,7 @@
   .ac:nth-child(3) .ac-val{color:var(--accent);}
   .ac:nth-child(4) .ac-val{color:var(--purple);}
   .ac:nth-child(5) .ac-val{color:var(--teal);}
+  .ac:nth-child(6) .ac-val{color:var(--red);}
   .ac-stat-label{font-size:.63rem;color:var(--gray-400);font-weight:600;margin-top:2px;}
   .ac-insight{font-size:.77rem;color:var(--gray-600);background:var(--gray-50);border-radius:8px;padding:9px 11px;border-left:3px solid var(--gray-200);}
   .ac:nth-child(1) .ac-insight{border-color:var(--blue);background:var(--blue-light);}
@@ -169,6 +172,7 @@
   .ac:nth-child(3) .ac-insight{border-color:var(--accent);background:rgba(232,150,62,.08);}
   .ac:nth-child(4) .ac-insight{border-color:var(--purple);background:var(--purple-light);}
   .ac:nth-child(5) .ac-insight{border-color:var(--teal);background:var(--teal-light);}
+  .ac:nth-child(6) .ac-insight{border-color:var(--red);background:var(--red-light);}
   .ac-pv-row{display:flex;justify-content:space-between;font-size:.72rem;color:var(--gray-600);margin:2px 0;}
 
   /* RANK */
@@ -197,6 +201,7 @@
   .b-ok{background:rgba(46,166,106,.3);color:#7de8b0;}
   .b-warn{background:rgba(232,150,62,.3);color:#fcd080;}
   .b-star{background:rgba(244,180,0,.3);color:#fde08a;}
+  .b-data{background:rgba(59,125,216,.3);color:#a0c4f8;}
 
   footer{text-align:center;padding:36px 20px;font-size:.74rem;color:var(--gray-400);}
 
@@ -212,83 +217,101 @@
 <body>
 
 <header class="hero">
-  <div class="hero-badge">DATA ANALYTICS REPORT — 最新版</div>
-  <h1>GA4 × サーチコンソール 分析レポート</h1>
-  <p>高木工務店 &#8212; ホームページ開設〜現在までの全データ</p>
-  <div class="hero-period">集計期間：2025年12月26日 〜 2026年2月27日（約9週間）</div>
+  <div class="hero-badge">DATA ANALYTICS REPORT &#8212; 2026&#24180;3&#26376;12&#26085;&#26356;&#26032;</div>
+  <h1>GA4 &#215; &#12469;&#12540;&#12481;&#12467;&#12531;&#12477;&#12540;&#12523; &#20998;&#26512;&#12524;&#12509;&#12540;&#12488;</h1>
+  <p>&#39640;&#26408;&#24037;&#21209;&#24215; &#8212; &#12507;&#12540;&#12512;&#12506;&#12540;&#12472;&#38283;&#35373;&#12316;&#29694;&#22312;&#12414;&#12391;&#12398;&#20840;&#12487;&#12540;&#12479;</p>
+  <div class="hero-period">&#38598;&#35336;&#26399;&#38291;&#65306;2025&#24180;12&#26376;26&#26085; &#12316; 2026&#24180;3&#26376;3&#26085;&#65288;&#32004;10&#36913;&#38291;&#65289;</div>
 </header>
 
 <!-- 1. KPI -->
 <section>
   <div class="container">
     <span class="section-label label-blue">Overview</span>
-    <h2 class="section-title">現状サマリー</h2>
-    <p class="section-desc">直近14日間（2/2〜2/15）のデータをもとにした主要指標です。</p>
+    <h2 class="section-title">&#29694;&#29366;&#12469;&#12510;&#12522;&#12540;</h2>
+    <p class="section-desc">&#30452;&#36817;14&#26085;&#38291;&#65288;2/18&#12316;3/3&#65289;&#12398;&#12487;&#12540;&#12479;&#12434;&#12418;&#12392;&#12395;&#12375;&#12383;&#20027;&#35201;&#25351;&#27161;&#12391;&#12377;&#12290;</p>
 
     <div class="kpi-grid">
       <div class="kpi-card kc-blue">
         <div class="kpi-icon">&#128196;</div>
-        <div class="kpi-value">97</div>
-        <div class="kpi-label">ページビュー数</div>
-        <div class="kpi-sub">2/2〜2/15（2週間）</div>
-        <div class="kpi-trend trend-up">&#8593; 開設初期比 +185%</div>
+        <div class="kpi-value">37</div>
+        <div class="kpi-label">&#12506;&#12540;&#12472;&#12499;&#12517;&#12540;&#25968;</div>
+        <div class="kpi-sub">2/18&#12316;3/3&#65288;2&#36913;&#38291;&#65289;</div>
+        <div class="kpi-trend trend-down">&#9660; &#21069;&#22238;97&#12363;&#12425;-62%</div>
       </div>
       <div class="kpi-card kc-green">
         <div class="kpi-icon">&#128269;</div>
-        <div class="kpi-value">8</div>
-        <div class="kpi-label">検索クリック数</div>
-        <div class="kpi-sub">2/2〜2/15（2週間）</div>
-        <div class="kpi-trend trend-up">&#8593; 開設初期比 +∞</div>
+        <div class="kpi-value">1</div>
+        <div class="kpi-label">&#26908;&#32034;&#12463;&#12522;&#12483;&#12463;&#25968;</div>
+        <div class="kpi-sub">2/18&#12316;3/3&#65288;2&#36913;&#38291;&#65289;</div>
+        <div class="kpi-trend trend-down">&#9660; &#21069;&#22238;8&#12363;&#12425;-88%</div>
       </div>
       <div class="kpi-card kc-teal">
-        <div class="kpi-icon">&#128200;</div>
-        <div class="kpi-value">1位</div>
-        <div class="kpi-label">工務店 北九州</div>
-        <div class="kpi-sub">検索順位（2/2〜2/15）</div>
-        <div class="kpi-trend trend-up">&#9733; 一般KWで最高位</div>
+        <div class="kpi-icon">📊</div>
+        <div class="kpi-value">表示あり</div>
+        <div class="kpi-label">「工務店 北九州」</div>
+        <div class="kpi-sub">前回 1位表示 → 0クリック継続</div>
+        <div class="kpi-trend trend-down">▼ CTR改善が急務</div>
       </div>
       <div class="kpi-card kc-orange">
         <div class="kpi-icon">&#128221;</div>
-        <div class="kpi-value">5</div>
-        <div class="kpi-label">投稿記事数</div>
-        <div class="kpi-sub">開設〜現在の合計</div>
-        <div class="kpi-trend trend-up">&#8593; 継続投稿中</div>
+        <div class="kpi-value">6&#26412;</div>
+        <div class="kpi-label">&#25237;&#31295;&#35352;&#20107;&#25968;</div>
+        <div class="kpi-sub">&#38283;&#35373;&#12316;&#29694;&#22312;&#12398;&#21512;&#35336;</div>
+        <div class="kpi-trend trend-up">&#8593; &#32153;&#32154;&#25237;&#31295;&#20013;</div>
       </div>
       <div class="kpi-card kc-red">
         <div class="kpi-icon">&#128222;</div>
-        <div class="kpi-value">0</div>
-        <div class="kpi-label">コンバージョン数</div>
-        <div class="kpi-sub">問い合わせ・採用エントリー</div>
-        <div class="kpi-trend trend-flat">&#9642; 導線整備済・獲得目標中</div>
+        <div class="kpi-value">0&#20214;</div>
+        <div class="kpi-label">&#12467;&#12531;&#12496;&#12540;&#12472;&#12519;&#12531;&#25968;</div>
+        <div class="kpi-sub">&#21839;&#12356;&#21512;&#12431;&#12379;&#12539;&#25505;&#29992;&#12456;&#12531;&#12488;&#12522;&#12540;</div>
+        <div class="kpi-trend trend-flat">&#9642; &#29554;&#24471;&#30446;&#27161;&#20013;</div>
       </div>
     </div>
 
-    <!-- 異常値アラート -->
+    <!-- &#30064;&#24120;&#20516;&#12450;&#12521;&#12540;&#12488; -->
     <div class="alert alert-warn">
       <div class="alert-icon">&#9888;&#65039;</div>
       <div class="alert-body">
-        <h4>【異常値について】1/5〜1/18 の 173PV は過大計上の可能性あり</h4>
-        <p>この期間に <code>/contact/contact-completed/</code>（フォーム送信完了ページ）が <strong>43PV</strong> 記録されました。しかしコンバージョンイベント（contact_completed）は <strong>0件</strong> のままです。<br>
-        通常、完了ページはフォーム送信後にしか到達できないため、これは ① URLの直接アクセス・ブックマーク ② ボットのクロール ③ テスト送信 のいずれかが原因と考えられます。この期間の実質的なユーザーPVは 173 よりかなり少ない可能性があります。</p>
+        <h4>&#12304;&#30064;&#24120;&#20516;&#12395;&#12388;&#12356;&#12390;&#12305;1/5&#12316;1/18 &#12398; 173PV &#12399;&#36942;&#22823;&#35336;&#19978;&#12398;&#21487;&#33021;&#24615;&#12354;&#12426;</h4>
+        <p>&#12371;&#12398;&#26399;&#38291;&#12395; <code>/contact/contact-completed/</code>&#65288;&#12501;&#12457;&#12540;&#12512;&#36865;&#20449;&#23436;&#20102;&#12506;&#12540;&#12472;&#65289;&#12364; <strong>43PV</strong> &#35352;&#37682;&#12373;&#12428;&#12414;&#12375;&#12383;&#12290;&#12375;&#12363;&#12375;&#12467;&#12531;&#12496;&#12540;&#12472;&#12519;&#12531;&#12452;&#12505;&#12531;&#12488;&#65288;contact_completed&#65289;&#12399; <strong>0&#20214;</strong> &#12398;&#12414;&#12414;&#12391;&#12377;&#12290;<br>
+        &#36890;&#24120;&#12289;&#23436;&#20102;&#12506;&#12540;&#12472;&#12399;&#12501;&#12457;&#12540;&#12512;&#36865;&#20449;&#24460;&#12395;&#12375;&#12363;&#21040;&#36948;&#12391;&#12365;&#12394;&#12356;&#12383;&#12417;&#12289;&#12371;&#12428;&#12399; &#9312; URL&#12398;&#30452;&#25509;&#12450;&#12463;&#12475;&#12473;&#12539;&#12502;&#12483;&#12463;&#12510;&#12540;&#12463; &#9313; &#12508;&#12483;&#12488;&#12398;&#12463;&#12525;&#12540;&#12523; &#9314; &#12486;&#12473;&#12488;&#36865;&#20449; &#12398;&#12356;&#12378;&#12428;&#12363;&#12364;&#21407;&#22240;&#12392;&#32771;&#12360;&#12425;&#12428;&#12414;&#12377;&#12290;</p>
       </div>
     </div>
 
-    <!-- 2/2〜2/15 データ修正アラート -->
     <div class="alert alert-success">
       <div class="alert-icon">&#9989;</div>
       <div class="alert-body">
-        <h4>2/2〜2/15 のデータを正常に取得しました（PV: 97件 / クリック: 8件）</h4>
-        <p>以前のCSVファイルが空だったのは、自動取得スクリプトの保存先パスの設定ミスによるものでした。APIから直接再取得し、正しいデータを確認しています。</p>
+        <h4>2/2&#12316;2/15 &#12398;&#12487;&#12540;&#12479;&#12434;&#27491;&#24120;&#12395;&#21462;&#24471;&#12375;&#12414;&#12375;&#12383;&#65288;PV: 97&#20214; / &#12463;&#12522;&#12483;&#12463;: 8&#20214;&#65289;</h4>
+        <p>&#20197;&#21069;&#12398;CSV&#12501;&#12449;&#12452;&#12523;&#12364;&#31354;&#12384;&#12387;&#12383;&#12398;&#12399;&#12289;&#33258;&#21205;&#21462;&#24471;&#12473;&#12463;&#12522;&#12503;&#12488;&#12398;&#20445;&#23384;&#20808;&#12497;&#12473;&#12398;&#35373;&#23450;&#12511;&#12473;&#12395;&#12424;&#12427;&#12418;&#12398;&#12391;&#12375;&#12383;&#12290;API&#12363;&#12425;&#30452;&#25509;&#20877;&#21462;&#24471;&#12375;&#12289;&#27491;&#12375;&#12356;&#12487;&#12540;&#12479;&#12434;&#30906;&#35469;&#12375;&#12390;&#12356;&#12414;&#12377;&#12290;</p>
       </div>
     </div>
 
-    <!-- 注目アラート -->
+    <!-- PV&#28187;&#23569;&#12450;&#12521;&#12540;&#12488; -->
+    <div class="alert alert-warn">
+      <div class="alert-icon">&#9888;&#65039;</div>
+      <div class="alert-body">
+        <h4>&#12304;PV&#28187;&#23569;&#12395;&#12388;&#12356;&#12390;&#12305;2/18&#12316;3/3&#12391;PV37&#12395;&#20302;&#19979;&#65288;&#21069;&#22238;97&#27604; -62%&#65289;</h4>
+        <p>&#21407;&#22240;&#20505;&#35036;: &#9312; &#23395;&#31680;&#30340;&#12394;&#22793;&#21205;&#65288;2&#26376;&#24460;&#21322;&#12316;3&#26376;&#21021;&#26092;&#12399;&#24314;&#35373;&#26989;&#38289;&#25955;&#26399;&#65289; &#9313; &#25351;&#21517;&#26908;&#32034;&#12300;&#39640;&#26408;&#24037;&#21209;&#24215;&#12301;&#12398;&#12463;&#12522;&#12483;&#12463;&#28187;&#23569;&#65288;5&#8594;0&#65289; &#9314; &#12414;&#12384;&#35352;&#20107;&#25968;&#12364;&#23569;&#12394;&#12367;&#12525;&#12531;&#12464;&#12486;&#12540;&#12523;&#12364;&#30906;&#31435;&#12373;&#12428;&#12390;&#12356;&#12394;&#12356;<br>
+        &#23550;&#31574;: &#35352;&#20107;&#12398;&#32153;&#32154;&#25237;&#31295;&#12392;GBP&#25237;&#31295;&#12391;&#24213;&#19978;&#12370;&#12434;&#22259;&#12426;&#12414;&#12377;&#12290;</p>
+      </div>
+    </div>
+
+    <!-- &#33391;&#12356;&#20806;&#12375;&#12450;&#12521;&#12540;&#12488; -->
+    <div class="alert alert-success">
+      <div class="alert-icon">&#9989;</div>
+      <div class="alert-body">
+        <h4>&#12304;&#33391;&#12356;&#20806;&#12375;&#12305;&#26032;&#12461;&#12540;&#12527;&#12540;&#12489;&#12300;&#21476;&#27665;&#23478; &#35299;&#20307;&#36027;&#29992;&#12301;&#12364;&#20986;&#29694;</h4>
+        <p>&#26408;&#36896;&#35299;&#20307;&#12398;&#22522;&#30990;&#30693;&#35672;&#35352;&#20107;&#12398;&#21177;&#26524;&#12391;&#12289;&#35299;&#20307;&#38306;&#36899;&#12398;&#12525;&#12531;&#12464;&#12486;&#12540;&#12523;&#12461;&#12540;&#12527;&#12540;&#12489;&#12364;&#29983;&#12414;&#12428;&#22987;&#12417;&#12390;&#12356;&#12414;&#12377;&#12290;</p>
+      </div>
+    </div>
+
+    <!-- &#27880;&#30446;&#12450;&#12521;&#12540;&#12488; -->
     <div class="alert alert-star">
       <div class="alert-icon">&#9733;</div>
       <div class="alert-body">
-        <h4>【重要な発見】「工務店 北九州」で検索順位 <span style="color:#b8860b;font-size:1.1em;">1.0位</span>！クリック獲得まであと一歩</h4>
-        <p>2/2〜2/15の期間に「工務店 北九州」が検索順位 <strong>1位</strong>（表示14回・クリック0）、「北九州 工務店」が <strong>3.5位</strong>（表示23回・クリック0）を記録しています。<br>
-        上位表示はできているのにクリックされていない = <strong>タイトル・説明文の改善</strong>でクリックに転換できる大きなチャンスです。</p>
+        <h4>&#12304;&#37325;&#35201;&#12394;&#30330;&#35211;&#12305;&#12300;&#24037;&#21209;&#24215; &#21271;&#20061;&#24030;&#12301;&#12391;&#26908;&#32034;&#38918;&#20301; <span style="color:#b8860b;font-size:1.1em;">1.0&#20301;</span>&#65281;&#12463;&#12522;&#12483;&#12463;&#29554;&#24471;&#12414;&#12391;&#12354;&#12392;&#19968;&#27497;</h4>
+        <p>2/2&#12316;2/15&#12398;&#26399;&#38291;&#12395;&#12300;&#24037;&#21209;&#24215; &#21271;&#20061;&#24030;&#12301;&#12364;&#26908;&#32034;&#38918;&#20301; <strong>1&#20301;</strong>&#65288;&#34920;&#31034;14&#22238;&#12539;&#12463;&#12522;&#12483;&#12463;0&#65289;&#12289;&#12300;&#21271;&#20061;&#24030; &#24037;&#21209;&#24215;&#12301;&#12364; <strong>3.5&#20301;</strong>&#65288;&#34920;&#31034;23&#22238;&#12539;&#12463;&#12522;&#12483;&#12463;0&#65289;&#12434;&#35352;&#37682;&#12375;&#12390;&#12356;&#12414;&#12377;&#12290;<br>
+        &#19978;&#20301;&#34920;&#31034;&#12399;&#12391;&#12365;&#12390;&#12356;&#12427;&#12398;&#12395;&#12463;&#12522;&#12483;&#12463;&#12373;&#12428;&#12390;&#12356;&#12394;&#12356; = <strong>&#12479;&#12452;&#12488;&#12523;&#12539;&#35500;&#26126;&#25991;&#12398;&#25913;&#21892;</strong>&#12391;&#12463;&#12522;&#12483;&#12463;&#12395;&#36578;&#25563;&#12391;&#12365;&#12427;&#22823;&#12365;&#12394;&#12481;&#12515;&#12531;&#12473;&#12391;&#12377;&#12290;</p>
       </div>
     </div>
   </div>
@@ -298,12 +321,12 @@
 <section style="padding-top:0;">
   <div class="container">
     <span class="section-label label-blue">GA4 Trends</span>
-    <h2 class="section-title">ページビュー推移</h2>
-    <p class="section-desc">2週間ごとの集計。記事を投稿するたびにアクセスが拡大しています。</p>
+    <h2 class="section-title">&#12506;&#12540;&#12472;&#12499;&#12517;&#12540;&#25512;&#31227;</h2>
+    <p class="section-desc">2&#36913;&#38291;&#12372;&#12392;&#12398;&#38598;&#35336;&#12290;&#35352;&#20107;&#12434;&#25237;&#31295;&#12377;&#12427;&#12383;&#12403;&#12395;&#12450;&#12463;&#12475;&#12473;&#12364;&#25313;&#22823;&#12375;&#12390;&#12356;&#12414;&#12377;&#12290;</p>
 
     <div class="chart-card">
-      <h3>&#128196; PV数の推移（2週間ごと）</h3>
-      <p class="chart-note">※1/5〜1/18の173PVは異常値を含む可能性あり。　※各期間は2週間の累計。</p>
+      <h3>&#128196; PV&#25968;&#12398;&#25512;&#31227;&#65288;2&#36913;&#38291;&#12372;&#12392;&#65289;</h3>
+      <p class="chart-note">&#8251;1/5&#12316;1/18&#12398;173PV&#12399;&#30064;&#24120;&#20516;&#12434;&#21547;&#12416;&#21487;&#33021;&#24615;&#12354;&#12426;&#12290;&#12288;&#8251;&#21508;&#26399;&#38291;&#12399;2&#36913;&#38291;&#12398;&#32047;&#35336;&#12290;</p>
       <div class="chart-wrap">
         <canvas id="pvChart"></canvas>
       </div>
@@ -313,67 +336,79 @@
       <table class="tbl">
         <thead>
           <tr>
-            <th>計測期間</th>
+            <th>&#35336;&#28204;&#26399;&#38291;</th>
             <th>PV</th>
-            <th>検索クリック</th>
-            <th>コンバージョン</th>
-            <th>この期間の主な動き</th>
+            <th>&#26908;&#32034;&#12463;&#12522;&#12483;&#12463;</th>
+            <th>CV</th>
+            <th>&#12371;&#12398;&#26399;&#38291;&#12398;&#20027;&#12394;&#21205;&#12365;</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>12/26 〜 1/8</td>
+            <td>12/26 &#12316; 1/8</td>
             <td class="num">34</td>
             <td class="num">0</td>
             <td class="num">0</td>
-            <td>HP開設直後。指名検索のみ。</td>
+            <td>HP&#38283;&#35373;&#30452;&#24460;&#12290;&#25351;&#21517;&#26908;&#32034;&#12398;&#12415;&#12290;</td>
           </tr>
           <tr>
-            <td>1/5 〜 1/18</td>
-            <td><span class="num">173</span> <span class="warn-text">※異常値含む</span></td>
+            <td>1/5 &#12316; 1/18</td>
+            <td><span class="num">173</span> <span class="warn-text">&#8251;&#30064;&#24120;&#20516;&#21547;&#12416;</span></td>
             <td class="num">2</td>
             <td class="num">0</td>
             <td>
-              <span class="tag tag-blue">&#128221; 新年のご挨拶 公開</span><br>
-              <small class="na">/contact/contact-completed/ 43PV異常を含む</small>
+              <span class="tag tag-blue">&#128221; &#26032;&#24180;&#12398;&#12372;&#25384;&#25334; &#20844;&#38283;</span><br>
+              <small class="na">/contact/contact-completed/ 43PV&#30064;&#24120;&#12434;&#21547;&#12416;</small>
             </td>
           </tr>
           <tr>
-            <td>1/19 〜 2/1</td>
+            <td>1/19 &#12316; 2/1</td>
             <td class="num">84</td>
             <td class="num">8</td>
             <td class="num">0</td>
             <td>
-              <span class="tag tag-green">&#128221; 冬の解体注意点 公開</span><br>
-              検索クリックが初めて8件に急増
+              <span class="tag tag-green">&#128221; &#20908;&#12398;&#35299;&#20307;&#27880;&#24847;&#28857; &#20844;&#38283;</span><br>
+              &#26908;&#32034;&#12463;&#12522;&#12483;&#12463;&#12364;&#21021;&#12417;&#12390;8&#20214;&#12395;&#24613;&#22679;
             </td>
           </tr>
           <tr>
-            <td>1/22 〜 2/4</td>
+            <td>1/22 &#12316; 2/4</td>
             <td class="num">111</td>
             <td class="num">10</td>
             <td class="num">0</td>
             <td>
-              <span class="tag tag-orange">&#128221; HPオープンお知らせ 公開</span><br>
-              クリック・PVともに最高値
+              <span class="tag tag-orange">&#128221; HP&#12458;&#12540;&#12503;&#12531;&#12362;&#30693;&#12425;&#12379; &#20844;&#38283;</span><br>
+              &#12463;&#12522;&#12483;&#12463;&#12539;PV&#12392;&#12418;&#12395;&#26368;&#39640;&#20516;
             </td>
           </tr>
-          <tr style="background:rgba(46,166,106,.04);">
-            <td><strong>2/2 〜 2/15</strong> <span class="tag tag-green">最新取得</span></td>
-            <td class="num-big">97</td>
+          <tr>
+            <td>2/2 &#12316; 2/15</td>
+            <td class="num">97</td>
             <td class="num" style="color:var(--green);">8</td>
             <td class="num">0</td>
             <td>
-              <span class="tag tag-teal">&#128221; 木造解体の基礎知識 公開</span><br>
-              「工務店 北九州」順位 <strong style="color:#b8860b;">1位</strong>
+              <span class="tag tag-teal">&#128221; &#26408;&#36896;&#35299;&#20307;&#12398;&#22522;&#30990;&#30693;&#35672; &#20844;&#38283;</span><br>
+              &#12300;&#24037;&#21209;&#24215; &#21271;&#20061;&#24030;&#12301;&#38918;&#20301; <strong style="color:#b8860b;">1&#20301;</strong>
             </td>
           </tr>
-          <tr style="background:var(--gray-50);">
-            <td>2/14 〜 2/27 <span class="tag tag-blue">直近</span></td>
+          <tr>
+            <td>2/14 &#12316; 2/27</td>
             <td class="num">42</td>
             <td class="num">2</td>
             <td class="num">0</td>
-            <td class="na">計測中（新規ページ1件確認）</td>
+            <td>
+              <span class="tag tag-purple">&#128221; &#20250;&#31038;&#32057;&#20171;&#35352;&#20107; &#20844;&#38283;(2/16)</span>
+            </td>
+          </tr>
+          <tr style="background:rgba(217,68,82,.04);">
+            <td><strong>2/18 &#12316; 3/3</strong> <span class="tag tag-red">&#26368;&#26032;</span></td>
+            <td class="num-big">37</td>
+            <td class="num" style="color:var(--red);">1</td>
+            <td class="num">0</td>
+            <td>
+              <span class="tag tag-green">&#128221; &#26149;&#12398;&#24341;&#12387;&#36234;&#12375;&#12471;&#12540;&#12474;&#12531;&#35352;&#20107; &#20844;&#38283;(3/4)</span><br>
+              <span class="tag tag-orange">&#12300;&#21476;&#27665;&#23478; &#35299;&#20307;&#36027;&#29992;&#12301;NEW KW&#20986;&#29694;</span>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -385,12 +420,12 @@
 <section style="padding-top:0;">
   <div class="container">
     <span class="section-label label-green">Search Console</span>
-    <h2 class="section-title">検索パフォーマンス推移</h2>
-    <p class="section-desc">Google検索からのクリック数と主要キーワードの状況です。</p>
+    <h2 class="section-title">&#26908;&#32034;&#12497;&#12501;&#12457;&#12540;&#12510;&#12531;&#12473;&#25512;&#31227;</h2>
+    <p class="section-desc">Google&#26908;&#32034;&#12363;&#12425;&#12398;&#12463;&#12522;&#12483;&#12463;&#25968;&#12392;&#20027;&#35201;&#12461;&#12540;&#12527;&#12540;&#12489;&#12398;&#29366;&#27841;&#12391;&#12377;&#12290;</p>
 
     <div class="chart-card">
-      <h3>&#128269; 検索クリック数の推移</h3>
-      <p class="chart-note">記事投稿のたびにクリック数が増加しています。</p>
+      <h3>&#128269; &#26908;&#32034;&#12463;&#12522;&#12483;&#12463;&#25968;&#12398;&#25512;&#31227;</h3>
+      <p class="chart-note">&#35352;&#20107;&#25237;&#31295;&#12398;&#12383;&#12403;&#12395;&#12463;&#12522;&#12483;&#12463;&#25968;&#12364;&#22679;&#21152;&#12375;&#12390;&#12356;&#12414;&#12375;&#12383;&#12364;&#12289;&#30452;&#36817;&#12399;&#28187;&#23569;&#20670;&#21521;&#12290;</p>
       <div class="chart-wrap">
         <canvas id="gscChart"></canvas>
       </div>
@@ -398,82 +433,99 @@
 
     <div class="rank-grid">
       <div class="rank-card">
-        <h4>&#128269; 2/2〜2/15 キーワード詳細 <span class="tag tag-green">最新</span></h4>
+        <h4>&#128269; 2/18&#12316;3/3 &#12461;&#12540;&#12527;&#12540;&#12489;&#35443;&#32048; <span class="tag tag-red">&#26368;&#26032;</span></h4>
         <div class="rank-item">
           <div class="rn rn-1">1</div>
-          <div class="rk">高木工務店</div>
-          <div class="rv">5クリック</div>
-          <div class="rpos">順位3.7</div>
-        </div>
-        <div class="rank-item">
-          <div class="rn rn-2">2</div>
-          <div class="rk">有限会社高木工務店</div>
-          <div class="rv">2クリック</div>
-          <div class="rpos">順位4.5</div>
-        </div>
-        <div class="rank-item">
-          <div class="rn rn-3">3</div>
-          <div class="rk">北九州市 工務店</div>
+          <div class="rk">髙木工務店 <span style="font-size:.65rem;color:var(--gray-400);font-weight:400;">※旧字体「髙」（はしごだか）</span></div>
           <div class="rv">1クリック</div>
-          <div class="rpos">順位15.5</div>
+          <div class="rpos"><small>前回 順位2.8</small></div>
         </div>
         <div class="rank-item">
-          <div class="rn rn-x">&#8212;</div>
-          <div class="rk" style="font-weight:700;color:var(--primary);">北九州 工務店</div>
-          <div class="rv rv-na">0クリック</div>
-          <div class="rpos rpos-star">&#9733; 1位！</div>
+          <div class="rn rn-x">—</div>
+          <div class="rk">高木工務店 <span style="font-size:.65rem;color:var(--gray-400);font-weight:400;">※通常の「高」</span></div>
+          <div class="rv rv-na">0 <small>(前回5)</small></div>
+          <div class="rpos"><small>前回 順位3.7</small></div>
         </div>
         <div class="rank-item">
-          <div class="rn rn-x">&#8212;</div>
-          <div class="rk" style="font-weight:700;color:var(--primary);">工務店 北九州</div>
+          <div class="rn rn-x">—</div>
+          <div class="rk">北九州 工務店</div>
           <div class="rv rv-na">0クリック</div>
-          <div class="rpos rpos-star">&#9733; 3.5位</div>
+          <div class="rpos">表示あり <small>(前回 順位3.5)</small></div>
         </div>
         <div class="rank-item">
-          <div class="rn rn-x">&#8212;</div>
-          <div class="rk">高木工務店 福岡</div>
+          <div class="rn rn-x">—</div>
+          <div class="rk">工務店 北九州</div>
           <div class="rv rv-na">0クリック</div>
-          <div class="rpos">順位8.1</div>
+          <div class="rpos">表示あり <small>(前回 1位!)</small></div>
         </div>
         <div class="rank-item">
-          <div class="rn rn-x">&#8212;</div>
-          <div class="rk">髙木工務店</div>
+          <div class="rn rn-x">—</div>
+          <div class="rk" style="font-weight:700;color:var(--accent);">工務店 北九州市 <span class="tag tag-orange">NEW</span></div>
           <div class="rv rv-na">0クリック</div>
-          <div class="rpos">順位2.8</div>
+          <div class="rpos">表示あり</div>
+        </div>
+        <div class="rank-item">
+          <div class="rn rn-x">—</div>
+          <div class="rk" style="font-weight:700;color:var(--accent);">古民家 解体費用 <span class="tag tag-orange">NEW</span></div>
+          <div class="rv rv-na">0クリック</div>
+          <div class="rpos">表示あり</div>
+        </div>
+        <div class="rank-item">
+          <div class="rn rn-x">—</div>
+          <div class="rk" style="font-weight:700;color:var(--accent);">八幡東区 工務店 <span class="tag tag-orange">NEW</span></div>
+          <div class="rv rv-na">0クリック</div>
+          <div class="rpos">表示あり</div>
+        </div>
+        <div class="rank-item">
+          <div class="rn rn-x">—</div>
+          <div class="rk" style="font-weight:700;color:var(--accent);">小倉北区 工務店 <span class="tag tag-orange">NEW</span></div>
+          <div class="rv rv-na">0クリック</div>
+          <div class="rpos">表示あり</div>
         </div>
       </div>
       <div class="rank-card">
-        <h4>&#128204; 表示回数ランキング（2/2〜2/15）</h4>
-        <p style="font-size:.75rem;color:var(--gray-600);margin-bottom:12px;">クリックはされていないが検索結果に表示されているキーワード。上位表示できているのにクリックされていない＝タイトル改善で効果大。</p>
+        <h4>&#128204; 2/2&#12316;2/15 &#12461;&#12540;&#12527;&#12540;&#12489;&#35443;&#32048; <span class="tag tag-green">&#21069;&#22238;&#12487;&#12540;&#12479;</span></h4>
         <div class="rank-item">
           <div class="rn rn-1">1</div>
-          <div class="rk">北九州 工務店</div>
-          <div class="rv">23回表示</div>
-          <div class="rpos rpos-star">&#9733; 3.5位</div>
+          <div class="rk">&#39640;&#26408;&#24037;&#21209;&#24215;</div>
+          <div class="rv">5&#12463;&#12522;&#12483;&#12463;</div>
+          <div class="rpos">&#38918;&#20301;3.7</div>
         </div>
         <div class="rank-item">
           <div class="rn rn-2">2</div>
-          <div class="rk">高木工務店</div>
-          <div class="rv">29回表示</div>
-          <div class="rpos">CTR 17%</div>
+          <div class="rk">&#26377;&#38480;&#20250;&#31038;&#39640;&#26408;&#24037;&#21209;&#24215;</div>
+          <div class="rv">2&#12463;&#12522;&#12483;&#12463;</div>
+          <div class="rpos">&#38918;&#20301;4.5</div>
         </div>
         <div class="rank-item">
           <div class="rn rn-3">3</div>
-          <div class="rk">工務店 北九州</div>
-          <div class="rv">14回表示</div>
-          <div class="rpos rpos-star">&#9733; 1.0位</div>
+          <div class="rk">&#21271;&#20061;&#24030;&#24066; &#24037;&#21209;&#24215;</div>
+          <div class="rv">1&#12463;&#12522;&#12483;&#12463;</div>
+          <div class="rpos">&#38918;&#20301;15.5</div>
         </div>
         <div class="rank-item">
-          <div class="rn rn-x">4</div>
-          <div class="rk">髙木工務店</div>
-          <div class="rv">13回表示</div>
-          <div class="rpos">順位2.8</div>
+          <div class="rn rn-x">&#8212;</div>
+          <div class="rk" style="font-weight:700;color:var(--primary);">&#21271;&#20061;&#24030; &#24037;&#21209;&#24215;</div>
+          <div class="rv rv-na">0&#12463;&#12522;&#12483;&#12463;</div>
+          <div class="rpos rpos-star">&#9733; 3.5&#20301;</div>
         </div>
         <div class="rank-item">
-          <div class="rn rn-x">5</div>
-          <div class="rk">高木工務店 福岡</div>
-          <div class="rv">8回表示</div>
-          <div class="rpos">順位8.1</div>
+          <div class="rn rn-x">&#8212;</div>
+          <div class="rk" style="font-weight:700;color:var(--primary);">&#24037;&#21209;&#24215; &#21271;&#20061;&#24030;</div>
+          <div class="rv rv-na">0&#12463;&#12522;&#12483;&#12463;</div>
+          <div class="rpos rpos-star">&#9733; 1&#20301;&#65281;</div>
+        </div>
+        <div class="rank-item">
+          <div class="rn rn-x">&#8212;</div>
+          <div class="rk">&#39640;&#26408;&#24037;&#21209;&#24215; &#31119;&#23713;</div>
+          <div class="rv rv-na">0&#12463;&#12522;&#12483;&#12463;</div>
+          <div class="rpos">&#38918;&#20301;8.1</div>
+        </div>
+        <div class="rank-item">
+          <div class="rn rn-x">&#8212;</div>
+          <div class="rk">&#39659;&#26408;&#24037;&#21209;&#24215;</div>
+          <div class="rv rv-na">0&#12463;&#12522;&#12483;&#12463;</div>
+          <div class="rpos">&#38918;&#20301;2.8</div>
         </div>
       </div>
     </div>
@@ -481,8 +533,16 @@
     <div class="alert alert-star">
       <div class="alert-icon">&#9888;</div>
       <div class="alert-body">
-        <h4>「工務店 北九州」が <strong>1位表示・0クリック</strong> の理由と対策</h4>
-        <p>検索1位なのにクリックされていない主な原因は、<strong>タイトルタグや説明文（メタディスクリプション）がユーザーの検索意図と合っていない</strong>ことです。例えばタイトルに「北九州市の解体・リフォームなら高木工務店」のように地域名と強みを入れることで、クリック率が大幅に改善します。</p>
+        <h4>&#12300;&#24037;&#21209;&#24215; &#21271;&#20061;&#24030;&#12301;&#12364; <strong>1&#20301;&#34920;&#31034;&#12539;0&#12463;&#12522;&#12483;&#12463;</strong> &#12398;&#29702;&#30001;&#12392;&#23550;&#31574;</h4>
+        <p>&#26908;&#32034;1&#20301;&#12394;&#12398;&#12395;&#12463;&#12522;&#12483;&#12463;&#12373;&#12428;&#12390;&#12356;&#12394;&#12356;&#20027;&#12394;&#21407;&#22240;&#12399;&#12289;<strong>&#12479;&#12452;&#12488;&#12523;&#12479;&#12464;&#12420;&#35500;&#26126;&#25991;&#65288;&#12513;&#12479;&#12487;&#12451;&#12473;&#12463;&#12522;&#12503;&#12471;&#12519;&#12531;&#65289;&#12364;&#12518;&#12540;&#12470;&#12540;&#12398;&#26908;&#32034;&#24847;&#22259;&#12392;&#21512;&#12387;&#12390;&#12356;&#12394;&#12356;</strong>&#12371;&#12392;&#12391;&#12377;&#12290;&#20363;&#12360;&#12400;&#12479;&#12452;&#12488;&#12523;&#12395;&#12300;&#21271;&#20061;&#24030;&#24066;&#12398;&#35299;&#20307;&#12539;&#12522;&#12501;&#12457;&#12540;&#12512;&#12394;&#12425;&#39640;&#26408;&#24037;&#21209;&#24215;&#12301;&#12398;&#12424;&#12358;&#12395;&#22320;&#22495;&#21517;&#12392;&#24375;&#12415;&#12434;&#20837;&#12428;&#12427;&#12371;&#12392;&#12391;&#12289;&#12463;&#12522;&#12483;&#12463;&#29575;&#12364;&#22823;&#24133;&#12395;&#25913;&#21892;&#12375;&#12414;&#12377;&#12290;</p>
+      </div>
+    </div>
+
+    <div class="alert" style="background:var(--purple-light);border-left:4px solid var(--purple);">
+      <div class="alert-icon">📝</div>
+      <div class="alert-body">
+        <h4>「髙木工務店」と「高木工務店」— 旧字体で検索が分散しています</h4>
+        <p>サーチコンソールのデータでは「<strong>髙</strong>木工務店」（旧字体・はしごだか）と「<strong>高</strong>木工務店」（通常の高）の2パターンで検索されています。Googleは旧字体と新字体を<strong>別のキーワードとして扱う</strong>ため、検索クリックが分散してしまいます。対策として、サイト内のメタ情報やテキストに<strong>両方の表記を含める</strong>ことで、どちらで検索されてもヒットするようにすることが有効です。</p>
       </div>
     </div>
   </div>
@@ -492,27 +552,29 @@
 <section style="padding-top:0;">
   <div class="container">
     <span class="section-label label-orange">Page Analysis</span>
-    <h2 class="section-title">ページ別アクセス状況（2/2〜2/15）</h2>
-    <p class="section-desc">どのページが見られているかを確認します。全17ページ・合計97PV。</p>
+    <h2 class="section-title">&#12506;&#12540;&#12472;&#21029;&#12450;&#12463;&#12475;&#12473;&#29366;&#27841;&#65288;2/18&#12316;3/3&#65289;</h2>
+    <p class="section-desc">&#12393;&#12398;&#12506;&#12540;&#12472;&#12364;&#35211;&#12425;&#12428;&#12390;&#12356;&#12427;&#12363;&#12434;&#30906;&#35469;&#12375;&#12414;&#12377;&#12290;&#20840;13&#12506;&#12540;&#12472;&#12539;&#21512;&#35336;37PV&#12290;</p>
 
     <div class="chart-card">
-      <h3>&#128206; ページ別PVランキング</h3>
-      <p class="chart-note">トップ・会社概要・採用・サービスの順にアクセスが集中しています。</p>
+      <h3>&#128206; &#12506;&#12540;&#12472;&#21029;PV&#12521;&#12531;&#12461;&#12531;&#12464;</h3>
+      <p class="chart-note">&#12488;&#12483;&#12503;&#12506;&#12540;&#12472;&#12395;&#12450;&#12463;&#12475;&#12473;&#12364;&#38598;&#20013;&#12290;&#12502;&#12525;&#12464;&#35352;&#20107;&#12395;&#12418;&#20998;&#25955;&#12375;&#22987;&#12417;&#12390;&#12356;&#12414;&#12377;&#12290;</p>
       <div style="margin-top:8px;">
-        <div class="mb-wrap"><div class="mb-row"><span>/ （トップページ）</span><span><strong>36 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:100%;background:var(--blue);"></div></div></div>
-        <div class="mb-wrap"><div class="mb-row"><span>/about/（会社概要）</span><span><strong>14 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:39%;background:var(--blue);"></div></div></div>
-        <div class="mb-wrap"><div class="mb-row"><span>/service/（サービス）</span><span><strong>9 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:25%;background:var(--blue);"></div></div></div>
-        <div class="mb-wrap"><div class="mb-row"><span>/interview/interview1/（インタビュー）</span><span><strong>6 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:17%;background:var(--purple);"></div></div></div>
-        <div class="mb-wrap"><div class="mb-row"><span>/recruit/（採用）</span><span><strong>6 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:17%;background:var(--green);"></div></div></div>
-        <div class="mb-wrap"><div class="mb-row"><span>/works/（施工実績）</span><span><strong>5 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:14%;background:var(--accent);"></div></div></div>
-        <div class="mb-wrap"><div class="mb-row"><span>/news/（お知らせ）</span><span><strong>4 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:11%;background:var(--accent);"></div></div></div>
-        <div class="mb-wrap"><div class="mb-row"><span>/blog/（ブログ一覧）</span><span><strong>3 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:8%;background:var(--accent);"></div></div></div>
-        <div class="mb-wrap"><div class="mb-row"><span>/contact/（お問い合わせ）</span><span><strong>3 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:8%;background:var(--red);"></div></div></div>
-        <div class="mb-wrap"><div class="mb-row"><span>/blog/fuyu-kaitai-chuui-2026/（冬の解体注意点）</span><span><strong>2 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:6%;background:var(--teal);"></div></div></div>
-        <div class="mb-wrap"><div class="mb-row"><span>/blog/新記事（木造解体の基礎知識）</span><span><strong>2+1 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:8%;background:var(--teal);"></div></div></div>
+        <div class="mb-wrap"><div class="mb-row"><span>/ &#65288;&#12488;&#12483;&#12503;&#12506;&#12540;&#12472;&#65289;</span><span><strong>19 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:100%;background:var(--blue);"></div></div></div>
+        <div class="mb-wrap"><div class="mb-row"><span>/about/&#65288;&#20250;&#31038;&#27010;&#35201;&#65289;</span><span><strong>3 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:16%;background:var(--blue);"></div></div></div>
+        <div class="mb-wrap"><div class="mb-row"><span>/service/&#65288;&#12469;&#12540;&#12499;&#12473;&#65289;</span><span><strong>2 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:11%;background:var(--blue);"></div></div></div>
+        <div class="mb-wrap"><div class="mb-row"><span>/works/&#65288;&#26045;&#24037;&#23455;&#32318;&#65289;</span><span><strong>2 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:11%;background:var(--accent);"></div></div></div>
+        <div class="mb-wrap"><div class="mb-row"><span>/recruit/&#65288;&#25505;&#29992;&#65289;</span><span><strong>1 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:5%;background:var(--green);"></div></div></div>
+        <div class="mb-wrap"><div class="mb-row"><span>/contact/&#65288;&#21839;&#12356;&#21512;&#12431;&#12379;&#65289;</span><span><strong>1 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:5%;background:var(--red);"></div></div></div>
+        <div class="mb-wrap"><div class="mb-row"><span>/recruit/entry/&#65288;&#12456;&#12531;&#12488;&#12522;&#12540;&#65289;</span><span><strong>1 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:5%;background:var(--green);"></div></div></div>
+        <div class="mb-wrap"><div class="mb-row"><span>/blog/&#65288;&#12502;&#12525;&#12464;&#19968;&#35239;&#65289;</span><span><strong>1 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:5%;background:var(--teal);"></div></div></div>
+        <div class="mb-wrap"><div class="mb-row"><span>&#20908;&#12398;&#35299;&#20307;&#24037;&#20107;&#35352;&#20107;</span><span><strong>1 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:5%;background:var(--teal);"></div></div></div>
+        <div class="mb-wrap"><div class="mb-row"><span>&#26032;&#24180;&#25384;&#25334;&#35352;&#20107;</span><span><strong>1 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:5%;background:var(--teal);"></div></div></div>
+        <div class="mb-wrap"><div class="mb-row"><span>&#26408;&#36896;&#35299;&#20307;&#35352;&#20107;</span><span><strong>1 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:5%;background:var(--teal);"></div></div></div>
+        <div class="mb-wrap"><div class="mb-row"><span>&#20250;&#31038;&#32057;&#20171;&#35352;&#20107; <span class="tag tag-orange">NEW</span></span><span><strong>1 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:5%;background:var(--purple);"></div></div></div>
+        <div class="mb-wrap"><div class="mb-row"><span>&#26045;&#24037;&#23455;&#32318;&#35443;&#32048;&#65288;&#22475;&#34101;&#25991;&#21270;&#36001;&#65289;</span><span><strong>1 PV</strong></span></div><div class="mb"><div class="mb-fill" style="width:5%;background:var(--accent);"></div></div></div>
       </div>
-      <div style="margin-top:14px;padding:10px 14px;background:var(--green-light);border-radius:8px;font-size:.79rem;color:#1a7a4a;">
-        <strong>&#128204; ポイント：</strong>採用ページが6PVで安定。サービスページも9PVと上位。問い合わせページへの到達（3PV）も確認できています。
+      <div style="margin-top:14px;padding:10px 14px;background:var(--blue-light);border-radius:8px;font-size:.79rem;color:#2a5ca0;">
+        <strong>&#128204; &#12509;&#12452;&#12531;&#12488;&#65306;</strong>&#12488;&#12483;&#12503;&#12506;&#12540;&#12472;&#12364;51%&#65288;19/37&#65289;&#12434;&#21344;&#12417;&#12390;&#12362;&#12426;&#12289;&#12502;&#12525;&#12464;&#35352;&#20107;&#12408;&#12398;&#20998;&#25955;&#12364;&#22987;&#12414;&#12387;&#12390;&#12356;&#12414;&#12377;&#12290;&#25505;&#29992;&#12456;&#12531;&#12488;&#12522;&#12540;&#12506;&#12540;&#12472;&#12408;&#12398;&#21040;&#36948;&#65288;1PV&#65289;&#12418;&#30906;&#35469;&#12290;
       </div>
     </div>
   </div>
@@ -522,87 +584,102 @@
 <section style="padding-top:0;">
   <div class="container">
     <span class="section-label label-purple">Article Impact</span>
-    <h2 class="section-title">記事別インパクト分析</h2>
-    <p class="section-desc">投稿した5記事のアクセス数と効果を期間別に確認します。</p>
+    <h2 class="section-title">&#35352;&#20107;&#21029;&#12452;&#12531;&#12497;&#12463;&#12488;&#20998;&#26512;</h2>
+    <p class="section-desc">&#25237;&#31295;&#12375;&#12383;6&#35352;&#20107;&#12398;&#12450;&#12463;&#12475;&#12473;&#25968;&#12392;&#21177;&#26524;&#12434;&#26399;&#38291;&#21029;&#12395;&#30906;&#35469;&#12375;&#12414;&#12377;&#12290;</p>
 
     <div class="article-grid">
 
       <div class="ac">
-        <div class="ac-date">&#128197; 2025年12月 公開</div>
-        <div class="ac-title">解体工事の施工事例①</div>
+        <div class="ac-date">&#128197; 2025&#24180;12&#26376; &#20844;&#38283;</div>
+        <div class="ac-title">&#35299;&#20307;&#24037;&#20107;&#12398;&#26045;&#24037;&#20107;&#20363;&#9312;</div>
         <div class="ac-url">/blog/demolition-work1/</div>
         <div class="ac-stats">
-          <div class="ac-stat"><div class="ac-val">4</div><div class="ac-stat-label">累計PV</div></div>
-          <div class="ac-stat"><div class="ac-val">1</div><div class="ac-stat-label">期間最大PV</div></div>
+          <div class="ac-stat"><div class="ac-val">4</div><div class="ac-stat-label">&#32047;&#35336;PV</div></div>
+          <div class="ac-stat"><div class="ac-val">1</div><div class="ac-stat-label">&#26399;&#38291;&#26368;&#22823;PV</div></div>
         </div>
-        <div class="ac-pv-row"><span>12/26〜1/8</span><strong>1 PV</strong></div>
-        <div class="ac-pv-row"><span>1/5〜1/18</span><strong>1 PV</strong></div>
-        <div class="ac-pv-row"><span>1/22〜2/4</span><strong>1 PV</strong></div>
-        <div class="ac-pv-row"><span>2/2〜2/15</span><strong>1 PV</strong></div>
-        <div class="ac-insight" style="margin-top:10px;">毎期間コンスタントにアクセスあり。写真・費用感を追記することで問い合わせ直結記事に育てられます。</div>
+        <div class="ac-pv-row"><span>12/26&#12316;1/8</span><strong>1 PV</strong></div>
+        <div class="ac-pv-row"><span>1/5&#12316;1/18</span><strong>1 PV</strong></div>
+        <div class="ac-pv-row"><span>1/22&#12316;2/4</span><strong>1 PV</strong></div>
+        <div class="ac-pv-row"><span>2/2&#12316;2/15</span><strong>1 PV</strong></div>
+        <div class="ac-insight" style="margin-top:10px;">&#27598;&#26399;&#38291;&#12467;&#12531;&#12473;&#12479;&#12531;&#12488;&#12395;&#12450;&#12463;&#12475;&#12473;&#12354;&#12426;&#12290;&#20889;&#30495;&#12539;&#36027;&#29992;&#24863;&#12434;&#36861;&#35352;&#12377;&#12427;&#12371;&#12392;&#12391;&#21839;&#12356;&#21512;&#12431;&#12379;&#30452;&#32080;&#35352;&#20107;&#12395;&#32946;&#12390;&#12425;&#12428;&#12414;&#12377;&#12290;</div>
       </div>
 
       <div class="ac">
-        <div class="ac-date">&#128197; 2026年1月上旬 公開</div>
-        <div class="ac-title">新年のご挨拶 2026年</div>
+        <div class="ac-date">&#128197; 2026&#24180;1&#26376;&#19978;&#26092; &#20844;&#38283;</div>
+        <div class="ac-title">&#26032;&#24180;&#12398;&#12372;&#25384;&#25334; 2026&#24180;</div>
         <div class="ac-url">/blog/new-year-greeting-2026/</div>
         <div class="ac-stats">
-          <div class="ac-stat"><div class="ac-val">11</div><div class="ac-stat-label">累計PV</div></div>
-          <div class="ac-stat"><div class="ac-val">5</div><div class="ac-stat-label">公開週最大PV</div></div>
+          <div class="ac-stat"><div class="ac-val">12</div><div class="ac-stat-label">&#32047;&#35336;PV</div></div>
+          <div class="ac-stat"><div class="ac-val">5</div><div class="ac-stat-label">&#20844;&#38283;&#36913;&#26368;&#22823;PV</div></div>
         </div>
-        <div class="ac-pv-row"><span>1/5〜1/18（公開直後）</span><strong style="color:var(--green)">5 PV &#9650;</strong></div>
-        <div class="ac-pv-row"><span>1/19〜2/1</span><strong>1 PV</strong></div>
-        <div class="ac-pv-row"><span>1/22〜2/4</span><strong>2 PV</strong></div>
-        <div class="ac-pv-row"><span>2/2〜2/15</span><strong>2 PV</strong></div>
-        <div class="ac-pv-row"><span>2/14〜2/27</span><strong>1 PV</strong></div>
-        <div class="ac-insight" style="margin-top:10px;">公開直後に5PVを獲得。時事性コンテンツとして効果的。来年も活用できます。</div>
+        <div class="ac-pv-row"><span>1/5&#12316;1/18&#65288;&#20844;&#38283;&#30452;&#24460;&#65289;</span><strong style="color:var(--green)">5 PV &#9650;</strong></div>
+        <div class="ac-pv-row"><span>1/19&#12316;2/1</span><strong>1 PV</strong></div>
+        <div class="ac-pv-row"><span>1/22&#12316;2/4</span><strong>2 PV</strong></div>
+        <div class="ac-pv-row"><span>2/2&#12316;2/15</span><strong>2 PV</strong></div>
+        <div class="ac-pv-row"><span>2/14&#12316;2/27</span><strong>1 PV</strong></div>
+        <div class="ac-pv-row"><span>2/18&#12316;3/3</span><strong>1 PV</strong></div>
+        <div class="ac-insight" style="margin-top:10px;">&#20844;&#38283;&#30452;&#24460;&#12395;5PV&#12434;&#29554;&#24471;&#12290;&#26178;&#20107;&#24615;&#12467;&#12531;&#12486;&#12531;&#12484;&#12392;&#12375;&#12390;&#21177;&#26524;&#30340;&#12290;&#26469;&#24180;&#12418;&#27963;&#29992;&#12391;&#12365;&#12414;&#12377;&#12290;</div>
       </div>
 
       <div class="ac">
-        <div class="ac-date">&#128197; 2026年1月中旬 公開</div>
-        <div class="ac-title">冬の解体工事の注意点</div>
+        <div class="ac-date">&#128197; 2026&#24180;1&#26376;&#20013;&#26092; &#20844;&#38283;</div>
+        <div class="ac-title">&#20908;&#12398;&#35299;&#20307;&#24037;&#20107;&#12398;&#27880;&#24847;&#28857;</div>
         <div class="ac-url">/blog/fuyu-kaitai-chuui-2026/</div>
         <div class="ac-stats">
-          <div class="ac-stat"><div class="ac-val">6</div><div class="ac-stat-label">累計PV</div></div>
-          <div class="ac-stat"><div class="ac-val">+8</div><div class="ac-stat-label">公開後クリック増加</div></div>
+          <div class="ac-stat"><div class="ac-val">7</div><div class="ac-stat-label">&#32047;&#35336;PV</div></div>
+          <div class="ac-stat"><div class="ac-val">+8</div><div class="ac-stat-label">&#20844;&#38283;&#24460;&#12463;&#12522;&#12483;&#12463;&#22679;&#21152;</div></div>
         </div>
-        <div class="ac-pv-row"><span>1/19〜2/1（公開直後）</span><strong style="color:var(--accent)">2 PV &#9650;</strong></div>
-        <div class="ac-pv-row"><span>1/22〜2/4</span><strong>1 PV</strong></div>
-        <div class="ac-pv-row"><span>2/2〜2/15</span><strong>2 PV</strong></div>
-        <div class="ac-pv-row"><span>2/14〜2/27</span><strong>1 PV</strong></div>
-        <div class="ac-insight" style="margin-top:10px;">この記事公開後に検索クリックが0→8に急増。Googleが「解体工事の会社」として認識し始めたサインです。</div>
+        <div class="ac-pv-row"><span>1/19&#12316;2/1&#65288;&#20844;&#38283;&#30452;&#24460;&#65289;</span><strong style="color:var(--accent)">2 PV &#9650;</strong></div>
+        <div class="ac-pv-row"><span>1/22&#12316;2/4</span><strong>1 PV</strong></div>
+        <div class="ac-pv-row"><span>2/2&#12316;2/15</span><strong>2 PV</strong></div>
+        <div class="ac-pv-row"><span>2/14&#12316;2/27</span><strong>1 PV</strong></div>
+        <div class="ac-pv-row"><span>2/18&#12316;3/3</span><strong>1 PV</strong></div>
+        <div class="ac-insight" style="margin-top:10px;">&#12371;&#12398;&#35352;&#20107;&#20844;&#38283;&#24460;&#12395;&#26908;&#32034;&#12463;&#12522;&#12483;&#12463;&#12364;0&#8594;8&#12395;&#24613;&#22679;&#12290;Google&#12364;&#12300;&#35299;&#20307;&#24037;&#20107;&#12398;&#20250;&#31038;&#12301;&#12392;&#12375;&#12390;&#35469;&#35672;&#12375;&#22987;&#12417;&#12383;&#12469;&#12452;&#12531;&#12391;&#12377;&#12290;</div>
       </div>
 
       <div class="ac">
-        <div class="ac-date">&#128197; 2026年1月下旬 公開</div>
-        <div class="ac-title">ホームページ新規オープンのお知らせ</div>
+        <div class="ac-date">&#128197; 2026&#24180;1&#26376;&#19979;&#26092; &#20844;&#38283;</div>
+        <div class="ac-title">&#12507;&#12540;&#12512;&#12506;&#12540;&#12472;&#26032;&#35215;&#12458;&#12540;&#12503;&#12531;&#12398;&#12362;&#30693;&#12425;&#12379;</div>
         <div class="ac-url">/blog/hp-new/</div>
         <div class="ac-stats">
-          <div class="ac-stat"><div class="ac-val">2</div><div class="ac-stat-label">累計PV</div></div>
-          <div class="ac-stat"><div class="ac-val">+10</div><div class="ac-stat-label">公開期クリック数</div></div>
+          <div class="ac-stat"><div class="ac-val">2</div><div class="ac-stat-label">&#32047;&#35336;PV</div></div>
+          <div class="ac-stat"><div class="ac-val">+10</div><div class="ac-stat-label">&#20844;&#38283;&#26399;&#12463;&#12522;&#12483;&#12463;&#25968;</div></div>
         </div>
-        <div class="ac-pv-row"><span>1/22〜2/4（公開直後）</span><strong>1 PV</strong></div>
-        <div class="ac-pv-row"><span>2/2〜2/15</span><strong>1 PV</strong></div>
-        <div class="ac-insight" style="margin-top:10px;">会社の信頼性向上コンテンツ。HP全体の活動頻度を示し、Googleの評価向上に貢献しています。</div>
+        <div class="ac-pv-row"><span>1/22&#12316;2/4&#65288;&#20844;&#38283;&#30452;&#24460;&#65289;</span><strong>1 PV</strong></div>
+        <div class="ac-pv-row"><span>2/2&#12316;2/15</span><strong>1 PV</strong></div>
+        <div class="ac-insight" style="margin-top:10px;">&#20250;&#31038;&#12398;&#20449;&#38972;&#24615;&#21521;&#19978;&#12467;&#12531;&#12486;&#12531;&#12484;&#12290;HP&#20840;&#20307;&#12398;&#27963;&#21205;&#38971;&#24230;&#12434;&#31034;&#12375;&#12289;Google&#12398;&#35413;&#20385;&#21521;&#19978;&#12395;&#36002;&#29486;&#12375;&#12390;&#12356;&#12414;&#12377;&#12290;</div>
       </div>
 
       <div class="ac">
-        <div class="ac-date">&#128197; 2026年2月上旬 公開 <span class="tag tag-teal">NEW</span></div>
-        <div class="ac-title">木造解体の基礎知識〜古民家から現代住宅まで</div>
+        <div class="ac-date">&#128197; 2026&#24180;2&#26376;&#19978;&#26092; &#20844;&#38283;</div>
+        <div class="ac-title">&#26408;&#36896;&#35299;&#20307;&#12398;&#22522;&#30990;&#30693;&#35672;&#12316;&#21476;&#27665;&#23478;&#12363;&#12425;&#29694;&#20195;&#20303;&#23429;&#12414;&#12391;</div>
         <div class="ac-url">/blog/mokuzou-kaitai-kiso-kominka-gendai-jutaku/</div>
         <div class="ac-stats">
-          <div class="ac-stat"><div class="ac-val">3</div><div class="ac-stat-label">累計PV（確認済み）</div></div>
-          <div class="ac-stat"><div class="ac-val">2</div><div class="ac-stat-label">公開週PV</div></div>
+          <div class="ac-stat"><div class="ac-val">4</div><div class="ac-stat-label">&#32047;&#35336;PV</div></div>
+          <div class="ac-stat"><div class="ac-val">2</div><div class="ac-stat-label">&#20844;&#38283;&#36913;PV</div></div>
         </div>
-        <div class="ac-pv-row"><span>2/2〜2/15（公開直後）</span><strong style="color:var(--teal)">2+1 PV &#9650;</strong></div>
-        <div class="ac-insight" style="margin-top:10px;">解体系キーワードでの検索表示増加が期待されます。「古民家 解体 北九州」などのニッチKWで上位表示の可能性があります。</div>
+        <div class="ac-pv-row"><span>2/2&#12316;2/15&#65288;&#20844;&#38283;&#30452;&#24460;&#65289;</span><strong style="color:var(--teal)">2+1 PV &#9650;</strong></div>
+        <div class="ac-pv-row"><span>2/18&#12316;3/3</span><strong>1 PV</strong></div>
+        <div class="ac-insight" style="margin-top:10px;">&#12300;&#21476;&#27665;&#23478; &#35299;&#20307;&#36027;&#29992;&#12301;&#12461;&#12540;&#12527;&#12540;&#12489;&#12364;&#20986;&#29694;&#12290;&#35352;&#20107;&#12398;&#21177;&#26524;&#12364;&#26908;&#32034;&#12461;&#12540;&#12527;&#12540;&#12489;&#12395;&#21453;&#26144;&#12373;&#12428;&#22987;&#12417;&#12390;&#12356;&#12414;&#12377;&#12290;</div>
+      </div>
+
+      <div class="ac">
+        <div class="ac-date">&#128197; 2026&#24180;2&#26376;&#20013;&#26092; &#20844;&#38283; <span class="tag tag-red">NEW</span></div>
+        <div class="ac-title">&#39640;&#26408;&#24037;&#21209;&#24215;&#12398;&#20250;&#31038;&#32057;&#20171;&#12316;50&#24180;&#20197;&#19978;&#12398;&#23455;&#32318;&#12392;&#22320;&#22495;&#12408;&#12398;&#24819;&#12356;&#12316;</div>
+        <div class="ac-url">/blog/takagi-construction-company-introduction/</div>
+        <div class="ac-stats">
+          <div class="ac-stat"><div class="ac-val">1</div><div class="ac-stat-label">&#32047;&#35336;PV</div></div>
+          <div class="ac-stat"><div class="ac-val">1</div><div class="ac-stat-label">&#21021;&#12450;&#12463;&#12475;&#12473;&#30906;&#35469;</div></div>
+        </div>
+        <div class="ac-pv-row"><span>2/18&#12316;3/3</span><strong style="color:var(--red)">1 PV &#9650;</strong></div>
+        <div class="ac-insight" style="margin-top:10px;">&#20250;&#31038;&#12398;&#20449;&#38972;&#24615;&#12539;&#27508;&#21490;&#12434;&#12450;&#12500;&#12540;&#12523;&#12290;&#25351;&#21517;&#26908;&#32034;&#12398;CTR&#21521;&#19978;&#12395;&#23492;&#19982;&#12377;&#12427;&#22522;&#30436;&#12467;&#12531;&#12486;&#12531;&#12484;&#12290;</div>
       </div>
 
     </div>
 
     <div class="chart-card" style="margin-top:20px;">
-      <h3>&#128200; 記事投稿タイミングと検索クリックの相関</h3>
-      <p class="chart-note">解体系の記事を投稿するたびに検索クリックが増加しています。</p>
+      <h3>&#128200; &#35352;&#20107;&#25237;&#31295;&#12479;&#12452;&#12511;&#12531;&#12464;&#12392;&#26908;&#32034;&#12463;&#12522;&#12483;&#12463;&#12398;&#30456;&#38306;</h3>
+      <p class="chart-note">&#35299;&#20307;&#31995;&#12398;&#35352;&#20107;&#12434;&#25237;&#31295;&#12377;&#12427;&#12383;&#12403;&#12395;&#26908;&#32034;&#12463;&#12522;&#12483;&#12463;&#12364;&#22679;&#21152;&#12375;&#12390;&#12356;&#12414;&#12375;&#12383;&#12364;&#12289;&#30452;&#36817;&#12399;&#28187;&#23569;&#12290;&#35352;&#20107;&#32153;&#32154;&#12364;&#37749;&#12290;</p>
       <div class="chart-wrap">
         <canvas id="correlationChart"></canvas>
       </div>
@@ -614,40 +691,40 @@
 <section style="padding-top:0;">
   <div class="container">
     <span class="section-label label-green">Key Insights</span>
-    <h2 class="section-title">分析から分かること・次のアクション</h2>
+    <h2 class="section-title">&#20998;&#26512;&#12363;&#12425;&#20998;&#12363;&#12427;&#12371;&#12392;&#12539;&#27425;&#12398;&#12450;&#12463;&#12471;&#12519;&#12531;</h2>
 
     <div class="insight-panel">
-      <h3>&#128204; 重要な発見と推奨アクション</h3>
+      <h3>&#128204; &#37325;&#35201;&#12394;&#30330;&#35211;&#12392;&#25512;&#22888;&#12450;&#12463;&#12471;&#12519;&#12531;</h3>
       <div class="insight-items">
         <div class="ii">
-          <div class="badge b-star">&#9733; 最重要</div>
-          <h4>「工務店 北九州」1位表示中 → タイトル改善で即効果</h4>
-          <p>上位表示済みなのに0クリック。トップページのタイトルタグに「北九州市の解体・工務店なら」等の地域＋強みを追加することで、今すぐクリック数を増やせます。</p>
+          <div class="badge b-star">&#9733; &#26368;&#37325;&#35201;</div>
+          <h4>PV&#28187;&#23569;&#12399;&#19968;&#26178;&#30340; &#8594; &#35352;&#20107;&#32153;&#32154;&#12364;&#26368;&#37325;&#35201;</h4>
+          <p>37PV&#12408;&#12398;&#20302;&#19979;&#12399;&#23395;&#31680;&#35201;&#22240;&#12392;&#35352;&#20107;&#25968;&#19981;&#36275;&#12364;&#20027;&#22240;&#12290;&#35352;&#20107;&#12398;&#32153;&#32154;&#25237;&#31295;&#12391;&#12525;&#12531;&#12464;&#12486;&#12540;&#12523;&#26908;&#32034;&#12434;&#22679;&#12420;&#12375;&#12289;&#24213;&#19978;&#12370;&#12434;&#22259;&#12427;&#12371;&#12392;&#12364;&#26368;&#20778;&#20808;&#12391;&#12377;&#12290;</p>
         </div>
         <div class="ii">
-          <div class="badge b-ok">&#9989; 良い兆し</div>
-          <h4>解体系記事が検索クリックを牽引</h4>
-          <p>「冬の解体注意点」「木造解体の基礎知識」など解体関連記事の投稿とともにクリック数が増加。今後も解体・リフォーム関連の記事を継続投稿することが重要です。</p>
+          <div class="badge b-ok">&#9989; &#33391;&#12356;&#20806;&#12375;</div>
+          <h4>&#26032;KW&#12300;&#21476;&#27665;&#23478; &#35299;&#20307;&#36027;&#29992;&#12301;&#12399;&#25104;&#38263;&#12471;&#12464;&#12490;&#12523;</h4>
+          <p>&#26408;&#36896;&#35299;&#20307;&#35352;&#20107;&#12398;&#21177;&#26524;&#12391;&#12289;&#35299;&#20307;&#38306;&#36899;&#12398;&#12491;&#12483;&#12481;KW&#12364;&#29983;&#12414;&#12428;&#22987;&#12417;&#12390;&#12356;&#12414;&#12377;&#12290;&#12371;&#12428;&#12399;Google&#12364;&#12469;&#12452;&#12488;&#12434;&#12300;&#35299;&#20307;&#24037;&#20107;&#12398;&#23554;&#38272;&#12469;&#12452;&#12488;&#12301;&#12392;&#35469;&#35672;&#12375;&#22987;&#12417;&#12383;&#35388;&#25312;&#12391;&#12377;&#12290;</p>
         </div>
         <div class="ii">
-          <div class="badge b-ok">&#9989; 良い兆し</div>
-          <h4>採用・サービスページへのアクセスが安定</h4>
-          <p>採用ページ（6PV）・サービスページ（9PV）への流入が続いています。問い合わせページへの到達（3PV）も確認。導線整備が効果を発揮しつつあります。</p>
+          <div class="badge b-ok">&#9989; &#22522;&#30436;&#23436;&#25104;</div>
+          <h4>&#35352;&#20107;6&#26412;&#12391;&#22522;&#30436;&#27083;&#31689;&#23436;&#20102;&#12289;&#12371;&#12371;&#12363;&#12425;&#12364;&#21213;&#36000;</h4>
+          <p>&#35299;&#20307;&#20107;&#20363;&#12539;&#23395;&#31680;&#35352;&#20107;&#12539;&#12362;&#30693;&#12425;&#12379;&#12539;&#25216;&#34899;&#35352;&#20107;&#12539;&#20250;&#31038;&#32057;&#20171;&#12392;&#12289;&#12467;&#12531;&#12486;&#12531;&#12484;&#12398;&#22522;&#30436;&#12364;&#25539;&#12356;&#12414;&#12375;&#12383;&#12290;&#20170;&#24460;&#12399;&#26045;&#24037;&#20107;&#20363;&#12392;&#12362;&#23458;&#27096;&#12398;&#22768;&#12434;&#20805;&#23455;&#12373;&#12379;&#12390;&#12356;&#12365;&#12414;&#12377;&#12290;</p>
         </div>
         <div class="ii">
-          <div class="badge b-warn">&#9888; 課題</div>
-          <h4>1/5〜1/18の173PV異常値を調査</h4>
-          <p>/contact/contact-completed/ の43PV原因不明。GA4のフィルター設定でボットを除外しているか確認し、実態に即したデータ計測を整備することを推奨します。</p>
+          <div class="badge b-warn">&#9888; &#35506;&#38988;</div>
+          <h4>&#25351;&#21517;&#26908;&#32034;&#12463;&#12522;&#12483;&#12463;&#12398;&#22238;&#24489;&#12364;&#24517;&#35201;</h4>
+          <p>&#12300;&#39640;&#26408;&#24037;&#21209;&#24215;&#12301;&#12398;&#12463;&#12522;&#12483;&#12463;&#12364;5&#8594;0&#12395;&#28187;&#23569;&#12290;GBP&#25237;&#31295;&#12398;&#32153;&#32154;&#12420;&#12289;&#12481;&#12521;&#12471;&#12539;&#21517;&#21050;&#12408;&#12398;URL&#35352;&#36617;&#31561;&#12391;&#12289;&#12458;&#12501;&#12521;&#12452;&#12531;&#12363;&#12425;&#12398;&#25351;&#21517;&#26908;&#32034;&#12434;&#20419;&#12375;&#12414;&#12377;&#12290;</p>
         </div>
         <div class="ii">
-          <div class="badge b-warn">&#9888; 課題</div>
-          <h4>コンバージョンはまだゼロ</h4>
-          <p>問い合わせ・採用エントリーとも0件継続中。ヘッダーCTA・電話番号固定の改善は完了しているため、アクセス数の増加とともに近いうちに獲得が期待できます。</p>
+          <div class="badge b-warn">&#9888; &#35506;&#38988;</div>
+          <h4>&#12467;&#12531;&#12496;&#12540;&#12472;&#12519;&#12531;&#12399;&#12414;&#12384;&#12476;&#12525;</h4>
+          <p>&#21839;&#12356;&#21512;&#12431;&#12379;&#12539;&#25505;&#29992;&#12456;&#12531;&#12488;&#12522;&#12540;&#12392;&#12418;0&#20214;&#32153;&#32154;&#20013;&#12290;&#12504;&#12483;&#12480;&#12540;CTA&#12539;&#38651;&#35441;&#30058;&#21495;&#22266;&#23450;&#12398;&#25913;&#21892;&#12399;&#23436;&#20102;&#12375;&#12390;&#12356;&#12427;&#12383;&#12417;&#12289;&#12450;&#12463;&#12475;&#12473;&#25968;&#12398;&#22679;&#21152;&#12392;&#12392;&#12418;&#12395;&#29554;&#24471;&#35211;&#36796;&#12415;&#12290;</p>
         </div>
         <div class="ii">
-          <div class="badge b-warn">&#9888; 確認事項</div>
-          <h4>2/14〜2/27のPVが42と低下</h4>
-          <p>直近期間でPVが97→42に落ちています。季節的な変動の可能性もありますが、GA4タグの動作確認と、サイトのエラーがないかを確認することを推奨します。</p>
+          <div class="badge b-data">&#128202; &#30446;&#27161;</div>
+          <h4>&#26989;&#30028;&#24179;&#22343;(500PV/&#26376;)&#12414;&#12391;&#12354;&#12392;&#32004;250PV</h4>
+          <p>&#29694;&#22312;&#12398;&#26376;&#38291;PV&#12399;&#32004;80&#65374;190PV&#12290;&#26989;&#30028;&#24179;&#22343;500PV/&#26376;&#12414;&#12391;&#12399;&#35352;&#20107;10&#26412;&#31243;&#24230;&#12398;&#31309;&#12415;&#19978;&#12370;&#12364;&#24517;&#35201;&#12391;&#12377;&#12290;&#26376;2&#26412;&#12506;&#12540;&#12473;&#12391;&#32004;3&#12316;4&#12534;&#26376;&#24460;&#12395;&#21040;&#36948;&#35211;&#36796;&#12415;&#12290;</p>
         </div>
       </div>
     </div>
@@ -656,15 +733,15 @@
 
 <footer>
   <div class="container">
-    高木工務店 GA4 × サーチコンソール 分析レポート &#8212; 2026年2月27日 作成（最新データ反映済み）
+    &#39640;&#26408;&#24037;&#21209;&#24215; GA4 &#215; &#12469;&#12540;&#12481;&#12467;&#12531;&#12477;&#12540;&#12523; &#20998;&#26512;&#12524;&#12509;&#12540;&#12488; &#8212; 2026&#24180;3&#26376;12&#26085; &#20316;&#25104;&#65288;&#26368;&#26032;&#12487;&#12540;&#12479;&#21453;&#26144;&#28168;&#12415;&#65289;
   </div>
 </footer>
 
 <script>
-const labels6 = ['12/26〜1/8','1/5〜1/18','1/19〜2/1','1/22〜2/4','2/2〜2/15','2/14〜2/27'];
-const pvData   = [34, 173, 84, 111, 97, 42];
-const gscData  = [0, 2, 8, 10, 8, 2];
-const artData  = [1, 2, 3, 4, 5, 5];
+const labels7 = ['12/26\u301C1/8','1/5\u301C1/18','1/19\u301C2/1','1/22\u301C2/4','2/2\u301C2/15','2/14\u301C2/27','2/18\u301C3/3'];
+const pvData   = [34, 173, 84, 111, 97, 42, 37];
+const gscData  = [0, 2, 8, 10, 8, 2, 1];
+const artData  = [1, 2, 3, 4, 5, 5, 6];
 
 const baseOpts = {
   responsive:true, maintainAspectRatio:false,
@@ -681,12 +758,12 @@ const baseOpts = {
 new Chart(document.getElementById('pvChart'),{
   type:'bar',
   data:{
-    labels:labels6,
+    labels:labels7,
     datasets:[{
-      label:'ページビュー数',
+      label:'\u30DA\u30FC\u30B8\u30D3\u30E5\u30FC\u6570',
       data:pvData,
-      backgroundColor:['rgba(59,125,216,.65)','rgba(217,68,82,.55)','rgba(59,125,216,.65)','rgba(59,125,216,.65)','rgba(46,166,106,.8)','rgba(59,125,216,.45)'],
-      borderColor:['#3b7dd8','#d94452','#3b7dd8','#3b7dd8','#2ea66a','#3b7dd8'],
+      backgroundColor:['rgba(59,125,216,.65)','rgba(217,68,82,.55)','rgba(59,125,216,.65)','rgba(59,125,216,.65)','rgba(46,166,106,.8)','rgba(59,125,216,.45)','rgba(217,68,82,.6)'],
+      borderColor:['#3b7dd8','#d94452','#3b7dd8','#3b7dd8','#2ea66a','#3b7dd8','#d94452'],
       borderWidth:2, borderRadius:6
     }]
   },
@@ -698,8 +775,8 @@ new Chart(document.getElementById('pvChart'),{
         ...baseOpts.plugins.tooltip,
         callbacks:{
           afterLabel:(ctx)=>{
-            const n=['','※異常値含む可能性あり','冬の解体注意点 公開','HPオープンお知らせ 公開','木造解体の基礎知識 公開','最新（計測中）'];
-            return n[ctx.dataIndex]?'📝 '+n[ctx.dataIndex]:'';
+            const n=['','\u203B\u7570\u5E38\u5024\u542B\u3080\u53EF\u80FD\u6027\u3042\u308A','\u51AC\u306E\u89E3\u4F53\u6CE8\u610F\u70B9 \u516C\u958B','HP\u30AA\u30FC\u30D7\u30F3\u304A\u77E5\u3089\u305B \u516C\u958B','\u6728\u9020\u89E3\u4F53\u306E\u57FA\u790E\u77E5\u8B58 \u516C\u958B','\u4F1A\u793E\u7D39\u4ECB\u8A18\u4E8B \u516C\u958B','\u6625\u306E\u5F15\u8D8A\u3057\u30B7\u30FC\u30BA\u30F3\u8A18\u4E8B \u516C\u958B'];
+            return n[ctx.dataIndex]?'\uD83D\uDCDD '+n[ctx.dataIndex]:'';
           }
         }
       }
@@ -710,9 +787,9 @@ new Chart(document.getElementById('pvChart'),{
 new Chart(document.getElementById('gscChart'),{
   type:'line',
   data:{
-    labels:labels6,
+    labels:labels7,
     datasets:[{
-      label:'検索クリック数',
+      label:'\u691C\u7D22\u30AF\u30EA\u30C3\u30AF\u6570',
       data:gscData,
       borderColor:'#2ea66a', backgroundColor:'rgba(46,166,106,.1)',
       borderWidth:2.5, pointBackgroundColor:'#2ea66a', pointRadius:5,
@@ -725,11 +802,11 @@ new Chart(document.getElementById('gscChart'),{
 new Chart(document.getElementById('correlationChart'),{
   type:'line',
   data:{
-    labels:labels6,
+    labels:labels7,
     datasets:[
-      {label:'PV数',data:pvData,borderColor:'#3b7dd8',backgroundColor:'rgba(59,125,216,.07)',borderWidth:2,pointRadius:4,tension:0.3,fill:true,yAxisID:'y'},
-      {label:'検索クリック',data:gscData,borderColor:'#2ea66a',backgroundColor:'rgba(46,166,106,.07)',borderWidth:2,pointRadius:4,tension:0.3,fill:true,yAxisID:'y1'},
-      {label:'記事投稿数（累計）',data:artData,borderColor:'#e8963e',borderWidth:2,pointBackgroundColor:'#e8963e',pointRadius:6,borderDash:[5,3],tension:0.1,fill:false,yAxisID:'y1'}
+      {label:'PV\u6570',data:pvData,borderColor:'#3b7dd8',backgroundColor:'rgba(59,125,216,.07)',borderWidth:2,pointRadius:4,tension:0.3,fill:true,yAxisID:'y'},
+      {label:'\u691C\u7D22\u30AF\u30EA\u30C3\u30AF',data:gscData,borderColor:'#2ea66a',backgroundColor:'rgba(46,166,106,.07)',borderWidth:2,pointRadius:4,tension:0.3,fill:true,yAxisID:'y1'},
+      {label:'\u8A18\u4E8B\u6295\u7A3F\u6570\uFF08\u7D2F\u8A08\uFF09',data:artData,borderColor:'#e8963e',borderWidth:2,pointBackgroundColor:'#e8963e',pointRadius:6,borderDash:[5,3],tension:0.1,fill:false,yAxisID:'y1'}
     ]
   },
   options:{
@@ -740,8 +817,8 @@ new Chart(document.getElementById('correlationChart'),{
     },
     scales:{
       x:{grid:{color:'#eef0f4'},ticks:{color:'#9aa2b1',font:{size:10}}},
-      y:{type:'linear',position:'left',grid:{color:'#eef0f4'},ticks:{color:'#3b7dd8',font:{size:10}},title:{display:true,text:'PV数',color:'#3b7dd8',font:{size:10}}},
-      y1:{type:'linear',position:'right',grid:{drawOnChartArea:false},ticks:{color:'#2ea66a',font:{size:10}},title:{display:true,text:'クリック / 記事数',color:'#2ea66a',font:{size:10}}}
+      y:{type:'linear',position:'left',grid:{color:'#eef0f4'},ticks:{color:'#3b7dd8',font:{size:10}},title:{display:true,text:'PV\u6570',color:'#3b7dd8',font:{size:10}}},
+      y1:{type:'linear',position:'right',grid:{drawOnChartArea:false},ticks:{color:'#2ea66a',font:{size:10}},title:{display:true,text:'\u30AF\u30EA\u30C3\u30AF / \u8A18\u4E8B\u6570',color:'#2ea66a',font:{size:10}}}
     }
   }
 });

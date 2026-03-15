@@ -760,18 +760,6 @@
   .phase-3 .card ul li::before { background: var(--blue); opacity: .35; }
   .phase-4 .card ul li::before { background: var(--green); opacity: .35; }
 
-  .tag-free {
-    display: inline-block;
-    font-size: .65rem;
-    font-weight: 700;
-    background: var(--green-light);
-    color: var(--green);
-    border-radius: 4px;
-    padding: 2px 8px;
-    vertical-align: middle;
-    margin-left: 6px;
-  }
-
   /* ===== KEYWORD TABLE ===== */
   .kw-table-wrap {
     background: #fff;
@@ -838,6 +826,101 @@
     color: var(--gray-600);
   }
 
+  /* ===== IN PROGRESS SECTION ===== */
+  .inprogress-section {
+    background: linear-gradient(135deg, #fff8ee 0%, #fff3e0 100%);
+    border: 2px solid var(--accent);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .inprogress-section::before {
+    content: "IN PROGRESS";
+    position: absolute;
+    top: -12px;
+    left: 24px;
+    background: var(--accent);
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 800;
+    padding: 4px 16px;
+    border-radius: 100px;
+    letter-spacing: .1em;
+  }
+  .inprogress-section h3 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 20px;
+  }
+  .article-timeline { list-style: none; padding: 0; }
+  .article-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 18px;
+    background: #fff;
+    border-radius: var(--radius);
+    margin-bottom: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.03);
+    border-left: 4px solid var(--accent);
+  }
+  .article-date {
+    font-size: .72rem;
+    font-weight: 700;
+    color: var(--gray-400);
+    min-width: 90px;
+    flex-shrink: 0;
+  }
+  .article-title-text {
+    font-size: .88rem;
+    font-weight: 700;
+    color: var(--primary);
+    flex: 1;
+    min-width: 200px;
+  }
+  .article-cat {
+    font-size: .65rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 100px;
+    flex-shrink: 0;
+  }
+  .cat-service { background: var(--blue-light); color: var(--blue); }
+  .cat-season { background: var(--green-light); color: var(--green); }
+  .cat-news { background: rgba(232,150,62,.12); color: var(--accent); }
+  .cat-company { background: rgba(124,92,191,.12); color: #7c5cbf; }
+  .article-status {
+    font-size: .65rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 100px;
+    background: var(--green-light);
+    color: var(--green);
+    flex-shrink: 0;
+  }
+  .article-progress-wrap {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-top: 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.03);
+  }
+  .article-progress-bar {
+    height: 14px;
+    background: var(--gray-100);
+    border-radius: 100px;
+    overflow: hidden;
+    margin: 10px 0 6px;
+  }
+  .article-progress-fill {
+    height: 100%;
+    width: 40%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    border-radius: 100px;
+  }
+
   /* ===== SUMMARY ROUTE ===== */
   .route {
     background: linear-gradient(135deg, var(--primary) 0%, #2c3e6b 100%);
@@ -846,64 +929,46 @@
     padding: 36px 32px;
     margin-top: 8px;
   }
-  .route h3 {
-    font-size: 1.3rem;
-    font-weight: 800;
-    margin-bottom: 24px;
-  }
+  .route h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 24px; }
   .route-steps {
-    display: flex;
-    align-items: flex-start;
-    gap: 0;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: flex; align-items: flex-start; gap: 0;
+    flex-wrap: wrap; justify-content: center;
   }
   .route-step {
-    flex: 1 1 180px;
-    text-align: center;
-    padding: 0 10px;
-    min-width: 160px;
-    position: relative;
+    flex: 1 1 180px; text-align: center; padding: 0 10px;
+    min-width: 160px; position: relative;
   }
   .route-circle {
-    width: 64px; height: 64px;
-    border-radius: 50%;
+    width: 64px; height: 64px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.5rem;
-    margin: 0 auto 10px;
-    font-weight: 900;
+    font-size: 1.5rem; margin: 0 auto 10px; font-weight: 900;
   }
   .route-step:nth-child(1) .route-circle { background: rgba(46,166,106,.4); border: 2px solid var(--green); }
   .route-step:nth-child(3) .route-circle { background: rgba(232,150,62,.25); border: 2px solid var(--accent); }
   .route-step:nth-child(5) .route-circle { background: rgba(59,125,216,.25); border: 2px solid var(--blue); }
   .route-step:nth-child(7) .route-circle { background: rgba(46,166,106,.25); border: 2px solid var(--green); }
-  .route-step h4 {
-    font-size: .9rem;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-  .route-step p {
-    font-size: .78rem;
-    opacity: .7;
-  }
+  .route-step h4 { font-size: .9rem; font-weight: 700; margin-bottom: 4px; }
+  .route-step p { font-size: .78rem; opacity: .7; }
   .route-step .done-badge {
-    position: absolute;
-    top: -6px;
-    right: 20%;
-    background: var(--green);
-    color: #fff;
-    font-size: .6rem;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 100px;
+    position: absolute; top: -6px; right: 20%;
+    background: var(--green); color: #fff;
+    font-size: .6rem; font-weight: 800;
+    padding: 2px 8px; border-radius: 100px;
+  }
+  .route-step .now-badge {
+    position: absolute; top: -6px; right: 20%;
+    background: var(--accent); color: #fff;
+    font-size: .6rem; font-weight: 800;
+    padding: 2px 8px; border-radius: 100px;
+    animation: pulse-now 2s infinite;
+  }
+  @keyframes pulse-now {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(232,150,62,.5); }
+    50% { box-shadow: 0 0 0 6px rgba(232,150,62,0); }
   }
   .route-arrow {
-    display: flex;
-    align-items: center;
-    padding-top: 20px;
-    font-size: 1.4rem;
-    opacity: .4;
-    flex-shrink: 0;
+    display: flex; align-items: center; padding-top: 20px;
+    font-size: 1.4rem; opacity: .4; flex-shrink: 0;
   }
 
   /* ===== NEXT STEPS ===== */
@@ -975,6 +1040,9 @@
     .header-mockup-bar { flex-wrap: wrap; }
     .hm-nav { display: none; }
     .hm-annotations { flex-direction: column; }
+    .article-item { flex-direction: column; gap: 8px; }
+    .article-date { min-width: auto; }
+    .inprogress-section { padding: 24px 16px; }
   }
 </style>
 </head>
@@ -985,6 +1053,7 @@
   <div class="hero-badge">PROGRESS REPORT</div>
   <h1>施策進捗レポート</h1>
   <p>高木工務店 &#8212; 改善プランの実施状況</p>
+  <div class="hero-date">2026年3月15日 更新 &#8212; 運用開始から約3ヶ月</div>
 </header>
 
 <!-- ===== 実施した施策 ===== -->
@@ -992,7 +1061,7 @@
   <div class="container">
     <span class="section-label green">Action Report</span>
     <h2 class="section-title">実施した施策</h2>
-    <p class="section-desc">今月実施した施策の報告です。まずホームページのお問い合わせ導線を整備し、お客様が問い合わせしやすい環境をつくりました。</p>
+    <p class="section-desc">STEP 2 コンテンツ制作が進行中です。記事6本を公開しました。</p>
 
     <!-- Phase Progress -->
     <div class="progress-overview">
@@ -1004,7 +1073,7 @@
       <div class="progress-card partial">
         <div class="progress-icon">&#9997;&#65039;</div>
         <div class="progress-label">STEP 2: コンテンツ制作</div>
-        <div class="progress-status partial">一部着手</div>
+        <div class="progress-status partial">進行中</div>
       </div>
       <div class="progress-card todo">
         <div class="progress-icon">&#128203;</div>
@@ -1022,10 +1091,10 @@
     <div class="overall-bar-wrap">
       <div class="overall-bar-label">
         <h3>全体の進捗</h3>
-        <span>40%</span>
+        <span>45%</span>
       </div>
       <div class="overall-bar">
-        <div class="overall-bar-fill" style="width: 40%;"></div>
+        <div class="overall-bar-fill" style="width: 45%;"></div>
       </div>
       <div class="phase-bars">
         <div class="phase-bar-item">
@@ -1033,8 +1102,8 @@
           <span>STEP 1: 100%</span>
         </div>
         <div class="phase-bar-item">
-          <div class="phase-mini-bar"><div class="phase-mini-fill" style="width:50%"></div></div>
-          <span>STEP 2: 50%</span>
+          <div class="phase-mini-bar"><div class="phase-mini-fill" style="width:60%"></div></div>
+          <span>STEP 2: 60%</span>
         </div>
         <div class="phase-bar-item">
           <div class="phase-mini-bar"><div class="phase-mini-fill" style="width:0%"></div></div>
@@ -1052,7 +1121,7 @@
       <div class="principle-icon">&#9989;</div>
       <div class="principle-text">
         <h3>STEP 1 完了：お問い合わせしやすい環境づくり</h3>
-        <p>電話番号の常時表示・見積もりボタンの設置・Googleビジネスプロフィールの整備が完了しました。<br>次のSTEP 2ではコンテンツを充実させ、アクセスと問い合わせ数を増やしていきます。</p>
+        <p>電話番号の常時表示・見積もりボタンの設置・Googleビジネスプロフィールの整備が完了しました。<br>現在はSTEP 2でコンテンツを充実させ、アクセスと問い合わせ数を増やしていきます。</p>
       </div>
     </div>
   </div>
@@ -1289,6 +1358,75 @@
   </div>
 </section>
 
+<!-- ===== STEP 2 進行中 ===== -->
+<section style="padding-top:0;">
+  <div class="container">
+    <span class="section-label" style="color:var(--accent);background:rgba(232,150,62,.12);">STEP 2 &#8212; In Progress</span>
+    <h2 class="section-title">STEP 2: コンテンツの種まき &#8212; 進行中</h2>
+    <p class="section-desc">ブログ記事を定期投稿してアクセスを増やしています。6本目まで公開完了。</p>
+
+    <div class="inprogress-section">
+      <h3>&#128221; 公開済みブログ記事（6本）</h3>
+
+      <ul class="article-timeline">
+        <li class="article-item">
+          <span class="article-date">2025年12月</span>
+          <span class="article-title-text">解体は「終わり」ではなく、新しい「始まり」のために。</span>
+          <span class="article-cat cat-news">リニューアル</span>
+          <span class="article-status">&#9989; 公開済</span>
+        </li>
+        <li class="article-item">
+          <span class="article-date">2026年1月上旬</span>
+          <span class="article-title-text">新年のご挨拶と2026年の抱負</span>
+          <span class="article-cat cat-news">お知らせ</span>
+          <span class="article-status">&#9989; 公開済</span>
+        </li>
+        <li class="article-item">
+          <span class="article-date">2026年1月中旬</span>
+          <span class="article-title-text">冬の解体工事で注意すべきポイント</span>
+          <span class="article-cat cat-season">季節・豆知識</span>
+          <span class="article-status">&#9989; 公開済</span>
+        </li>
+        <li class="article-item">
+          <span class="article-date">2026年2月5日</span>
+          <span class="article-title-text">木造解体の基礎知識～古民家から現代住宅まで～</span>
+          <span class="article-cat cat-service">サービス解説</span>
+          <span class="article-status">&#9989; 公開済</span>
+        </li>
+        <li class="article-item">
+          <span class="article-date">2026年2月16日</span>
+          <span class="article-title-text">高木工務店の会社紹介～50年以上の実績と地域への想い～</span>
+          <span class="article-cat cat-company">会社紹介</span>
+          <span class="article-status">&#9989; 公開済</span>
+        </li>
+        <li class="article-item">
+          <span class="article-date">2026年3月4日</span>
+          <span class="article-title-text">春の引っ越しシーズン前に！建物解体のタイミング</span>
+          <span class="article-cat cat-season">季節・豆知識</span>
+          <span class="article-status">&#9989; 公開済</span>
+        </li>
+      </ul>
+
+      <div class="article-progress-wrap">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;">
+          <span style="font-size:.85rem;font-weight:700;color:var(--primary);">記事投稿進捗</span>
+          <span style="font-size:1.3rem;font-weight:900;color:var(--accent);">6<small style="font-size:.75rem;font-weight:600;color:var(--gray-400);"> / 15本（3ヶ月目標）</small></span>
+        </div>
+        <div class="article-progress-bar">
+          <div class="article-progress-fill"></div>
+        </div>
+        <span style="font-size:.72rem;color:var(--gray-400);">目標ペース: 週1本 → 現状は順調に推移</span>
+      </div>
+    </div>
+
+    <!-- 施工事例ページ -->
+    <div style="background:#fff;border-radius:var(--radius);padding:20px 24px;box-shadow:var(--shadow);border:1px solid var(--gray-100);border-left:4px solid var(--gray-200);margin-bottom:32px;">
+      <h4 style="font-size:.95rem;font-weight:700;color:var(--primary);margin-bottom:6px;">&#128247; 施工事例ページ &#8212; 未着手</h4>
+      <p style="font-size:.83rem;color:var(--gray-600);margin:0;">Before/After写真と費用目安を掲載した事例ページの作成を予定しています。<br><strong>お客様からの施工写真のご提供をお待ちしています。</strong>スマホ撮影でOKです。</p>
+    </div>
+  </div>
+</section>
+
 <!-- ===== 今後の施策 ===== -->
 <section>
   <div class="container">
@@ -1367,12 +1505,70 @@
         </div>
       </div>
     </div>
+
+    <!-- 今後の記事スケジュール -->
+    <div style="background:#fff;border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow);border:1px solid var(--gray-100);margin-top:24px;">
+      <h3 style="font-size:1.05rem;font-weight:800;color:var(--primary);margin-bottom:16px;">&#128197; 今後の記事スケジュール</h3>
+      <div style="display:grid;gap:8px;">
+        <div style="display:flex;align-items:center;gap:14px;padding:12px 16px;background:var(--gray-50);border-radius:8px;">
+          <span style="font-size:.72rem;font-weight:700;color:var(--gray-400);min-width:80px;">3月第3週</span>
+          <span style="font-size:.85rem;font-weight:600;color:var(--primary);">解体工事の補助金制度まとめ（福岡県版）</span>
+          <span style="margin-left:auto;font-size:.62rem;font-weight:700;padding:2px 8px;border-radius:100px;background:var(--red-light);color:var(--red);">高優先</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:12px 16px;background:var(--gray-50);border-radius:8px;">
+          <span style="font-size:.72rem;font-weight:700;color:var(--gray-400);min-width:80px;">3月第4週</span>
+          <span style="font-size:.85rem;font-weight:600;color:var(--primary);">アスベスト含有建物の解体で知っておくべきこと</span>
+          <span style="margin-left:auto;font-size:.62rem;font-weight:700;padding:2px 8px;border-radius:100px;background:rgba(232,150,62,.12);color:var(--accent);">中優先</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:12px 16px;background:var(--gray-50);border-radius:8px;">
+          <span style="font-size:.72rem;font-weight:700;color:var(--gray-400);min-width:80px;">4月第1週</span>
+          <span style="font-size:.85rem;font-weight:600;color:var(--primary);">空き家の放置リスクと解体のメリット</span>
+          <span style="margin-left:auto;font-size:.62rem;font-weight:700;padding:2px 8px;border-radius:100px;background:rgba(232,150,62,.12);color:var(--accent);">中優先</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ロードマップ ===== -->
+<section style="padding-top:0;">
+  <div class="container">
+    <div class="route">
+      <h3>&#128204; 改善ロードマップ</h3>
+      <div class="route-steps">
+        <div class="route-step">
+          <span class="done-badge">COMPLETED</span>
+          <div class="route-circle">&#9989;</div>
+          <h4>STEP 1</h4>
+          <p>導線整備<br>GBP最適化</p>
+        </div>
+        <div class="route-arrow">&#8594;</div>
+        <div class="route-step">
+          <span class="now-badge">NOW</span>
+          <div class="route-circle">&#9997;&#65039;</div>
+          <h4>STEP 2</h4>
+          <p>コンテンツ制作<br>記事6本 / 目標15本</p>
+        </div>
+        <div class="route-arrow">&#8594;</div>
+        <div class="route-step">
+          <div class="route-circle">&#128188;</div>
+          <h4>STEP 3</h4>
+          <p>採用施策<br>4月〜</p>
+        </div>
+        <div class="route-arrow">&#8594;</div>
+        <div class="route-step">
+          <div class="route-circle">&#127775;</div>
+          <h4>STEP 4</h4>
+          <p>口コミ・継続成長<br>6月〜</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <footer>
   <div class="container">
-    高木工務店 施策進捗レポート
+    高木工務店 施策進捗レポート &#8212; 2026年3月15日更新
   </div>
 </footer>
 
