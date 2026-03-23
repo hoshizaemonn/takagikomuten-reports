@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>施工実績ヒアリングシート — 高木工務店</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: rgb(247, 246, 244); font-family: "Noto Sans JP", "Hiragino Sans", sans-serif; color: #333; line-height: 1.8; -webkit-font-smoothing: antialiased; }
+    .header { background: #fff; border-bottom: 1px solid #e8e6e3; padding: 24px 0; text-align: center; }
+    .header h1 { font-size: 22px; font-weight: 700; color: #1a1a1a; letter-spacing: 0.04em; }
+    .header p { font-size: 13px; color: #888; margin-top: 6px; }
+    .main { max-width: 840px; margin: 0 auto; padding: 32px 20px 80px; }
+    .intro { background: #fff; border-radius: 12px; padding: 24px 28px; margin-bottom: 32px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+    .intro p { font-size: 14px; color: #555; line-height: 1.9; }
+    .project-card { background: #fff; border-radius: 14px; padding: 0; margin-bottom: 36px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; }
+    .project-header { background: #3d3d3d; color: #fff; padding: 18px 28px; display: flex; align-items: center; gap: 14px; }
+    .project-num { background: #bfa76a; color: #fff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; }
+    .project-title { font-size: 17px; font-weight: 700; letter-spacing: 0.02em; }
+    .project-body { padding: 28px; }
+    .photo-section { margin-bottom: 24px; }
+    .photo-row { display: flex; gap: 12px; align-items: stretch; }
+    .photo-col { flex: 1; min-width: 0; }
+    .photo-badge { text-align: center; font-size: 14px; font-weight: 700; padding: 8px 0; border-radius: 6px; margin-bottom: 8px; letter-spacing: 0.06em; }
+    .photo-badge.before { color: #2e7d8c; background: #e8f4f7; }
+    .photo-badge.after { color: #8c2e2e; background: #f7e8e8; }
+    .photo-img-wrap { border-radius: 8px; overflow: hidden; border: 1px solid #e8e6e3; aspect-ratio: 4/3; background: #f5f5f4; }
+    .photo-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-arrow { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 36px; padding-top: 36px; }
+    .photo-arrow svg { width: 28px; height: 28px; color: #3d8c5c; }
+    .photo-confirm { margin-top: 14px; padding: 12px 16px; background: #f9f8f6; border: 1px solid #e8e6e3; border-radius: 8px; display: flex; align-items: center; gap: 10px; }
+    .photo-confirm input[type="checkbox"] { width: 18px; height: 18px; accent-color: #bfa76a; flex-shrink: 0; }
+    .photo-confirm label { font-size: 14px; color: #555; cursor: pointer; }
+    .section-divider { border: none; border-top: 1px solid #eee; margin: 24px 0; }
+    .info-table { width: 100%; border-collapse: collapse; }
+    .info-table tr { border-bottom: 1px solid #f0efed; }
+    .info-table tr:last-child { border-bottom: none; }
+    .info-table th { width: 120px; padding: 14px 12px; font-size: 13px; font-weight: 500; color: #888; text-align: left; vertical-align: top; white-space: nowrap; }
+    .info-table td { padding: 10px 12px; }
+    .info-table td input[type="text"], .info-table td textarea { width: 100%; padding: 10px 14px; font-size: 15px; font-family: inherit; color: #333; background: #fafaf9; border: 1px solid #ddd; border-radius: 8px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+    .info-table td input:focus, .info-table td textarea:focus { border-color: #bfa76a; box-shadow: 0 0 0 3px rgba(191, 167, 106, 0.12); }
+    .info-table td textarea { min-height: 80px; resize: vertical; }
+    .info-table td .date-range { display: flex; align-items: center; gap: 10px; }
+    .info-table td .date-range input[type="date"] { padding: 10px 12px; font-size: 14px; font-family: inherit; color: #333; background: #fafaf9; border: 1px solid #ddd; border-radius: 8px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+    .info-table td .date-range input:focus { border-color: #bfa76a; box-shadow: 0 0 0 3px rgba(191, 167, 106, 0.12); }
+    .info-table td .date-range span { font-size: 14px; color: #888; }
+    .info-table td .hint { font-size: 11px; color: #bbb; margin-top: 4px; }
+    .download-section { text-align: center; padding: 24px 0; }
+    .btn-download { display: inline-flex; align-items: center; gap: 10px; background: #bfa76a; color: #fff; font-size: 16px; font-weight: 700; font-family: inherit; padding: 16px 48px; border: none; border-radius: 50px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 12px rgba(191, 167, 106, 0.3); letter-spacing: 0.04em; }
+    .btn-download:hover { background: #b09a5e; box-shadow: 0 6px 20px rgba(191, 167, 106, 0.4); transform: translateY(-1px); }
+    .btn-download:active { transform: translateY(0); }
+    .btn-download svg { width: 20px; height: 20px; }
+    .footer { text-align: center; padding: 24px 20px; font-size: 12px; color: #aaa; }
+    @media (max-width: 640px) { .project-body { padding: 20px 16px; } .photo-row { flex-direction: column; } .photo-arrow { width: auto; padding-top: 0; transform: rotate(90deg); padding: 4px 0; } .info-table th { display: block; width: 100%; padding: 10px 0 2px; } .info-table td { display: block; padding: 2px 0 10px; } .date-range { flex-direction: column; align-items: stretch !important; } }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div style="max-width:840px;margin:0 auto;padding:0 20px;">
+      <h1>施工実績 ヒアリングシート</h1>
+      <p>有限会社 髙木工務店</p>
+    </div>
+  </header>
+  <main class="main">
+    <div class="intro">
+      <p>以下の施工実績について、写真の確認と各項目へのご記入をお願いいたします。<br>写真に問題がなければチェックを入れ、施工情報をご記入のうえ、ページ下部の「ダウンロード」ボタンから内容を保存してお送りください。</p>
+    </div>
+
+    <!-- PROJECT 1 -->
+    <div class="project-card" data-project="1">
+      <div class="project-header">
+        <div class="project-num">1</div>
+        <div class="project-title">木造店舗解体工事（カットサロンさいとう様）</div>
+      </div>
+      <div class="project-body">
+        <div class="photo-section">
+          <div class="photo-row">
+            <div class="photo-col">
+              <div class="photo-badge before">Before</div>
+              <div class="photo-img-wrap"><img src="https://takagikomuten.jp/wp-content/uploads/2026/03/368_before.webp" alt="Before"></div>
+            </div>
+            <div class="photo-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg></div>
+            <div class="photo-col">
+              <div class="photo-badge after">After</div>
+              <div class="photo-img-wrap"><img src="https://takagikomuten.jp/wp-content/uploads/2026/03/cutusalon-after.webp" alt="After"></div>
+            </div>
+          </div>
+          <div class="photo-confirm"><input type="checkbox" id="photo-ok-1"><label for="photo-ok-1">この写真で問題ありません</label></div>
+        </div>
+        <hr class="section-divider">
+        <table class="info-table">
+          <tr><th>施工場所</th><td><input type="text" id="p1-area" placeholder="例：福岡県北九州市小倉北区○○"></td></tr>
+          <tr><th>施工内容</th><td><textarea id="p1-detail" placeholder="例：木造2階建て店舗の解体工事。解体後、整地まで施工。"></textarea><div class="hint">どんな工事を行ったかお書きください</div></td></tr>
+          <tr><th>施工期間</th><td><div class="date-range"><input type="date" id="p1-start"><span>〜</span><input type="date" id="p1-end"></div></td></tr>
+          <tr><th>特記事項</th><td><textarea id="p1-notes" placeholder="例：近隣への配慮、使用した重機、工夫した点など"></textarea></td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project-card" data-project="2">
+      <div class="project-header">
+        <div class="project-num">2</div>
+        <div class="project-title">木造店舗兼住宅解体工事（三萩野）</div>
+      </div>
+      <div class="project-body">
+        <div class="photo-section">
+          <div class="photo-row">
+            <div class="photo-col">
+              <div class="photo-badge before">Before</div>
+              <div class="photo-img-wrap"><img src="https://takagikomuten.jp/wp-content/uploads/2026/03/misagino-before-new.webp" alt="Before"></div>
+            </div>
+            <div class="photo-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg></div>
+            <div class="photo-col">
+              <div class="photo-badge after">After</div>
+              <div class="photo-img-wrap"><img src="https://takagikomuten.jp/wp-content/uploads/2026/03/misagino-after.webp" alt="After"></div>
+            </div>
+          </div>
+          <div class="photo-confirm"><input type="checkbox" id="photo-ok-2"><label for="photo-ok-2">この写真で問題ありません</label></div>
+        </div>
+        <hr class="section-divider">
+        <table class="info-table">
+          <tr><th>施工場所</th><td><input type="text" id="p2-area" placeholder="例：福岡県北九州市小倉北区三萩野"></td></tr>
+          <tr><th>施工内容</th><td><textarea id="p2-detail" placeholder="例：木造2階建て店舗兼住宅の解体工事。整地まで施工。"></textarea><div class="hint">どんな工事を行ったかお書きください</div></td></tr>
+          <tr><th>施工期間</th><td><div class="date-range"><input type="date" id="p2-start"><span>〜</span><input type="date" id="p2-end"></div></td></tr>
+          <tr><th>特記事項</th><td><textarea id="p2-notes" placeholder="例：交差点角地のため交通量が多く、安全対策を徹底など"></textarea></td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="project-card" data-project="3">
+      <div class="project-header">
+        <div class="project-num">3</div>
+        <div class="project-title">木造住宅解体工事（福田様邸）</div>
+      </div>
+      <div class="project-body">
+        <div class="photo-section">
+          <div class="photo-row">
+            <div class="photo-col">
+              <div class="photo-badge before">Before</div>
+              <div class="photo-img-wrap"><img src="https://takagikomuten.jp/wp-content/uploads/2026/03/380_before.webp" alt="Before"></div>
+            </div>
+            <div class="photo-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg></div>
+            <div class="photo-col">
+              <div class="photo-badge after">After</div>
+              <div class="photo-img-wrap"><img src="https://takagikomuten.jp/wp-content/uploads/2026/03/fukuda-after.webp" alt="After"></div>
+            </div>
+          </div>
+          <div class="photo-confirm"><input type="checkbox" id="photo-ok-3"><label for="photo-ok-3">この写真で問題ありません</label></div>
+        </div>
+        <hr class="section-divider">
+        <table class="info-table">
+          <tr><th>施工場所</th><td><input type="text" id="p3-area" placeholder="例：福岡県北九州市○○区○○"></td></tr>
+          <tr><th>施工内容</th><td><textarea id="p3-detail" placeholder="例：木造2階建て住宅の解体工事。解体後、整地まで施工。"></textarea><div class="hint">どんな工事を行ったかお書きください</div></td></tr>
+          <tr><th>施工期間</th><td><div class="date-range"><input type="date" id="p3-start"><span>〜</span><input type="date" id="p3-end"></div></td></tr>
+          <tr><th>特記事項</th><td><textarea id="p3-notes" placeholder="例：住宅街のため騒音・振動に配慮して施工など"></textarea></td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="download-section">
+      <button class="btn-download" onclick="downloadSheet()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        ダウンロード
+      </button>
+      <p style="font-size:12px; color:#999; margin-top:12px;">全3件分の記入内容がテキストファイルとして保存されます</p>
+    </div>
+  </main>
+  <footer class="footer">&copy; 有限会社 髙木工務店</footer>
+
+  <script>
+    document.querySelectorAll('.radio-option input[type="radio"]').forEach(radio => {
+      radio.addEventListener('change', () => {
+        const group = radio.closest('.radio-options');
+        group.querySelectorAll('.radio-option').forEach(opt => opt.classList.remove('selected'));
+        radio.closest('.radio-option').classList.add('selected');
+      });
+    });
+
+    function downloadSheet() {
+      const projects = [
+        { num: 1, name: '木造店舗解体工事（カットサロンさいとう様）' },
+        { num: 2, name: '木造店舗兼住宅解体工事（三萩野）' },
+        { num: 3, name: '木造住宅解体工事（福田様邸）' }
+      ];
+      const now = new Date();
+      const dateStr = now.getFullYear()+'/'+String(now.getMonth()+1).padStart(2,'0')+'/'+String(now.getDate()).padStart(2,'0')+' '+String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
+      let text = '========================================\n';
+      text += '施工実績 ヒアリングシート\n';
+      text += '有限会社 髙木工務店\n';
+      text += '========================================\n';
+      text += '作成日時: '+dateStr+'\n\n';
+      projects.forEach(p => {
+        const prefix = 'p' + p.num;
+        const area = document.getElementById(prefix+'-area').value || '（未入力）';
+        const detail = document.getElementById(prefix+'-detail').value || '（未入力）';
+        const start = document.getElementById(prefix+'-start').value || '未定';
+        const end = document.getElementById(prefix+'-end').value || '未定';
+        const notes = document.getElementById(prefix+'-notes').value || '（なし）';
+        const photoOk = document.getElementById('photo-ok-'+p.num).checked ? '確認済み' : '未確認';
+        text += '━━━━━━━━━━━━━━━━━━━━━━━━\n';
+        text += '【'+p.num+'】'+p.name+'\n';
+        text += '━━━━━━━━━━━━━━━━━━━━━━━━\n';
+        text += '写真: '+photoOk+'\n';
+        text += '施工場所: '+area+'\n';
+        text += '施工内容: '+detail+'\n';
+        text += '施工期間: '+start+' 〜 '+end+'\n';
+        text += '特記事項: '+notes+'\n\n';
+      });
+      text += '========================================\n';
+      const blob = new Blob([text], { type: 'text/plain; charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = '施工実績ヒアリングシート_高木工務店.txt';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
